@@ -38,39 +38,13 @@
                 <ol class="breadcrumb"><strong>Você está em:</strong> <li>Camino 1</li><li>Caminho 2 </li><li>Caminho 3</li></ol>
                 <div class="row">
                     <div class="row">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img src="..." alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                         <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img src="..." alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                            
-                        </div>
-                         <div class="col-sm-6 col-md-4">
-                            <div class="thumbnail">
-                                <img src="..." alt="...">
-                                <div class="caption">
-                                    <h3>Thumbnail label</h3>
-                                    <p>...</p>
-                                    <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                                </div>
-                            </div>
-                            
-                        </div>
+                        <?php
+                        require './controller/BeanShopping.class.php';
+                        $produtos = new BeanShopping();
+                        $produtos->listaProdutos();
+                                
+                        ?>
+                    
                     </div>
                 </div>
             </div>

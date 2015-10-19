@@ -1,22 +1,20 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-
 /**
  * Description of Produto
  *
- * @author Wilton RIbeiro Silva
+ * @author 2898807
  */
 class Produto {
-    private $codigo;
-    private $descricao;
-    private $quantidade;
-    private $preco;
-    private $imagem;
-    
+    private $Codigo;
+    private $Descricao;
+    private $Estoque;
+    private $Preco;
+    private $Imagem;
 }
