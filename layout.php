@@ -39,9 +39,12 @@
                 <div class="row">
                     <div class="row">
                         <?php
-                        require './controller/BeanShopping.class.php';
+                        require (dirname(__FILE__)."/controller/BeanShopping.class.php");
                         $produtos = new BeanShopping();
                         $produtos->listaProdutos();
+                        //print_r($produtos);
+                        
+                        
                                 
                         ?>
                     

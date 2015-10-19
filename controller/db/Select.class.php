@@ -1,5 +1,5 @@
 <?php
-require ('Connection.class.php');
+require (dirname(__FILE__). "/Connection.class.php");
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -20,7 +20,7 @@ class Select {
         $this->Tabela = $tabela;
         $this->selecionarTodos();
         $array = $this->prepareExec();
-       // print_r($array);
+        //print_r($array);
         return $array;
     }
     private function selecionarTodos(){
