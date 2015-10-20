@@ -12,7 +12,7 @@ class BeanShopping {
        foreach ($produtos as $key => $value) {
           //print_r($value);
           
-           echo "<div class='col-sm-6 col-md-4' center-block>
+           echo "<div class='col-sm-6 col-md-4 center'>
                             <div class='thumbnail'>
                                 <img src='./imagens/produtos/{$value['imagem']}' alt='...' height='171px' width='180px'>
                                 <div class='caption'>

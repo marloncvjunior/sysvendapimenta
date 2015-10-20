@@ -37,7 +37,7 @@
             <div class="container">
                 <ol class="breadcrumb"><strong>Você está em:</strong> <li>Camino 1</li><li>Caminho 2 </li><li>Caminho 3</li></ol>
                 <div class="row">
-                    <div class="row">
+                   
                         <?php
                         require (dirname(__FILE__)."/controller/BeanShopping.class.php");
                         $produtos = new BeanShopping();
