@@ -14,7 +14,7 @@ class BeanShopping {
           
            echo "<div class='col-sm-6 col-md-4 center'>
                             <div class='thumbnail'>
-                                <img src='./imagens/produtos/{$value['imagem']}' alt='...' height='171px' width='180px'>
+                                <img src='./imagens/produtos/{$value['imagem']}' alt='...' height='121px' width='127px'>
                                 <div class='caption'>
                                     <h3>{$value['descricao']}</h3>
                                     <p>...</p>

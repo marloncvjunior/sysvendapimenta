@@ -14,9 +14,11 @@
 class Carrinho {
     private $Codigo;
     private $Cliente;
-    private $Produto;
+    private $Produtos = array();
     
-    
+    public function __construct($Cliente) {
+        ;
+    }
     
     
     function getCodigo() {
@@ -35,12 +37,9 @@ class Carrinho {
         $this->Codigo = $Codigo;
     }
 
-    function setCliente($Cliente) {
-        $this->Cliente = $Cliente;
-    }
-
-    function setProduto($Produto) {
-        $this->Produto = $Produto;
+    function addProduto($Produto,$quant) {
+        array_push($this->Produtos, $produto);
+        $this->Produtos = $Produto;
     }
 
 
