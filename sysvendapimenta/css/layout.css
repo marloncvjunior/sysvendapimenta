@@ -1,0 +1,15 @@
+.navbar{
+    border: solid 1px black;
+}
+body {
+    padding:0px;
+}
+.container{
+    border: solid 1px black;
+}
+.center{
+    text-align: center;
+}
+.bloco{
+    display: block;
+}

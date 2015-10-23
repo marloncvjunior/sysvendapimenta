@@ -72,7 +72,8 @@
                 <div class="col-md-2">
                     <div class="thumbnail">
                         <div class="caption text-center nav navbar alert-info">
-                            Carrinho 
+                            <span class="glyphicon glyphicon-shopping-cart"> Carrinho</span>
+                             
                         </div>
                         <ul class="nav">
                         <li class="">Total da Compra: R$</li> 
