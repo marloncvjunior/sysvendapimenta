@@ -10,3 +10,6 @@ body {
 .center{
     text-align: center;
 }
+.bloco{
+    display: block;
+}

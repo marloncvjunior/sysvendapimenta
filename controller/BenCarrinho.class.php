@@ -13,6 +13,9 @@ require dirname(__FILE__."/../model/Usuario.class.php");
  */
 class BenCarrinho {
     public static function create(){
-        $_SESSION['usuario'];
+        $usuario = new Usuario();
+        $usuario->setCodigo($_SESSION['codigo']);
+        $usuario->setUsuario($_SESSION['usuario'])
+        ;
     }
 }

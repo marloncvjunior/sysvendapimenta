@@ -1,5 +1,6 @@
 <?php
 require (dirname(__FILE__). "/controller/BeanShopping.class.php");
-$produtos = new BeanShopping();
-//print_r($produtos);
-$produtos->listaProdutos();
+require (dirname(__FILE__)."/controller/BeanUsuario.class.php");
+//BeanUsuario::autentica();
+?>
+<a href="./controller/BeanUsuario.class.php/autentica/?usuario= Wilton">Vai</a>

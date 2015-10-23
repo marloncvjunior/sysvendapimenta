@@ -23,36 +23,48 @@
                 </button>
                 <a class="navbar-brand" href="#">Menu</a>
             </div>
-            <div class="container"
-                 <div class="collapse navbar-collapse" id="bar1">
-                    <ul class="nav navbar-nav">
+                <div class="collapse navbar-collapse pull-right" >
+                    <ul class="nav navbar-nav ">
                         <li class="active"><a href="#">Link 1</a></li>
                         <li><a href="#">Link 2</a></li>
                         <li><a href="#">Link 3</a></li>
+                        <li></li>
+                    </ul>
+                    <div class="navbar navbar-form pull-right">
+                        <form action="controller/BeanUsuario.class.php" method="POST">
+                        <label class="label" for="usuario">Usuario:</label> 
+                        <input type="text" name="usuario"/>
+                        <label class="label" for="senha"> Senha:</label>
+                        <input type="password" name="senha"/>
+                        <button class="btn btn-success" type="submit">Login</button>
+                    </form>
                 </div>
-                </ul>
-            </div>
-
-            <!-- Código acima cria a barra fixa do site -->
-            <div class="container">
-                <ol class="breadcrumb"><strong>Você está em:</strong> <li>Camino 1</li><li>Caminho 2 </li><li>Caminho 3</li></ol>
-                <div class="row">
-                   
-                        <?php
-                        require (dirname(__FILE__)."/controller/BeanShopping.class.php");
-                        $produtos = new BeanShopping();
-                        $produtos->listaProdutos();
-                        //print_r($produtos);
-                        
-                        
-                                
-                        ?>
-                    
-                    </div>
                 </div>
+               
             </div>
+        
+             
+     
+
+        </div>
+
+        <!-- Código acima cria a barra fixa do site -->
+        <div class="container">
+            <ol class="breadcrumb"><strong>Você está em:</strong> <li>Camino 1</li><li>Caminho 2 </li><li>Caminho 3</li></ol>
+            <div class="row">
+
+                <?php
+                require (dirname(__FILE__) . "/controller/BeanShopping.class.php");
+                $produtos = new BeanShopping();
+                $produtos->listaProdutos();
+                //print_r($produtos);
+                ?>
+
+            </div>
+        </div>
+    </div>
 
 
 
-    </body>
+</body>
 </html>
