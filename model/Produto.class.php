@@ -12,9 +12,62 @@
  * @author 2898807
  */
 class Produto {
-    private $Codigo;
-    private $Descricao;
-    private $Estoque;
-    private $Preco;
-    private $Imagem;
+    private $codigo;
+    private $descricao;
+    private $estoque;
+    private $preco;
+    private $imagem;
+    
+    function getCodigo() {
+        return $this->codigo;
+    }
+
+    function getDescricao() {
+        return $this->descricao;
+    }
+
+    function getEstoque() {
+        return $this->estoque;
+    }
+
+    function getPreco() {
+        return $this->preco;
+    }
+
+    function getImagem() {
+        return $this->imagem;
+    }
+
+    function setCodigo($codigo) {
+        $this->codigo = $codigo;
+    }
+
+    function setDescricao($descricao) {
+        $this->descricao = $descricao;
+    }
+
+    function setEstoque($estoque) {
+        $this->estoque = $estoque;
+    }
+
+    function setPreco($preco) {
+        $this->preco = $preco;
+    }
+
+    function setImagem($imagem) {
+        $this->imagem = $imagem;
+    }
+    function arrayToProduct($array){
+        foreach ($array as $key => $value) {
+            $this->codigo =   $value['codigo'];
+            $this->descricao = $value['descricao'];
+            $this->estoque = $value['estoque'];
+            $this->preco = $value['preco'];
+            $this->imagem = $value['imagem'];
+        }
+        
+    }
+
+    
+    
 }

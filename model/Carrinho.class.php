@@ -14,12 +14,12 @@
 class Carrinho {
     private $Codigo;
     private $Cliente;
-    private $Produtos = array();
-    private $Quantidade = array();
+    public $Produtos = array();
+    public $Quantidade = array();
     
     
     public function __construct($Cliente) {
-        ;
+        $this->Cliente = $Cliente;
     }
     
     

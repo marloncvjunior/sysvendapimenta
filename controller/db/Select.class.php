@@ -18,14 +18,19 @@ class Select {
     
     public function exeQuery($tabela){
         $this->Tabela = $tabela;
-        $this->selecionarTodos();
+        $this->Sql= "Select * from {$this->Tabela}";
         $array = $this->prepareExec();
         //print_r($array);
         return $array;
     }
-    private function selecionarTodos(){
-      $this->Sql= "Select * from {$this->Tabela}";
+    public function exeQueryCod($tabela,$codigo){
+        $this->Tabela = $tabela;
+        $this->Sql= "Select * from {$this->Tabela} where codigo =".$codigo;
+        $array = $this->prepareExec();
+        //print_r($array);
+        return $array;
     }
+    
     private function prepareExec(){
         $this->Conn = new Connection();
         $con = $this->Conn->conectar();

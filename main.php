@@ -5,7 +5,10 @@ require (dirname(__FILE__) . "/controller/BeanCliente.class.php");
 require (dirname(__FILE__) . "/controller/BeanCarrinho.class.php");
 BeanCliente::autentica($_REQUEST);
 $carrinho = new BeanCarrinho();
-print_r($carrinho);
+$carrinho->add($_GET);
+
+//print_r($carrinho);
+//var_dump($carrinho);
 ?>
 
 <!-- Código acima cria a barra fixa do site -->
@@ -26,9 +29,10 @@ print_r($carrinho);
                 <div class="row">
 
                     <?php
+                    //print_r($_SESSION['carrinho']);
                     $produtos = new BeanShopping();
                     $listaprodutos = $produtos->listaProdutos();
-                    //print_r($listaprodutos);
+                   // print_r($listaprodutos);
                     foreach ($listaprodutos as $key => $value) {
                         //print_r($value);
 
@@ -38,7 +42,12 @@ print_r($carrinho);
                                 <div class='caption'>
                                     <h3>{$value['descricao']}</h3>
                                     <p>...</p>
-                                    <p><a href='#' class='btn btn-primary' role='button'>Adicionar no Carrinho</a> 
+                                    <form>
+                                    <p><label for='quant'>Quantidade: </label> <input type='text' name='quant' size='6'/>
+                                    <button type='submit' formaction='".$_SERVER['SCRIPT_NAME']."'name='codproducar' value='".$value['codigo']."' class='btn btn-primary' role='button'>Adicionar no Carrinho
+                                        </button>
+                                        </a> 
+                                    </form>
                                 </div>
                             </div>
                             
@@ -59,8 +68,8 @@ print_r($carrinho);
 
                 </div>
                 <ul class="nav">
-                    <li class="">Cliente:<?php echo "" ;?> </li>
-                    <li class="">Total da Compra: R$ <?php echo "";?> </li> 
+                    <li class="">Cliente:<?php echo "".$_SESSION['carrinho']['cliente']->getNome(); ;?> </li>
+                    <li class="">Total da Compra: R$ <?php echo "".$_SESSION['usuario']->getValorTotal();?> </li> 
                     <li>Total de Itens:<?php echo "";?></li>
                     <li><a class="btn btn-link">Lista de Itens</a></li>
                 </ul>

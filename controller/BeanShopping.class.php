@@ -9,7 +9,7 @@ class BeanShopping {
        $listaproduto = new Select();
        $produtos = $listaproduto->exeQuery("produto");
        //print_r($produtos);
-       return $produtos;
+       return (Object) $produtos;
        
        
       //echo "Urrull";
