@@ -1,5 +1,7 @@
 <?php
-require dirname(__FILE__."/../model/Usuario.class.php");
+//require(dirname(__DIR__) . "..\model\Cliente.class.php");
+require(dirname(__DIR__) . "..\model\Carrinho.class.php");
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,11 +13,12 @@ require dirname(__FILE__."/../model/Usuario.class.php");
  *
  * @author will
  */
-class BenCarrinho {
+class BeanCarrinho {
     public static function create(){
-        $usuario = new Usuario();
-        $usuario->setCodigo($_SESSION['codigo']);
-        $usuario->setUsuario($_SESSION['usuario'])
+        $cliente = $_SESSION['usuario'];
+        $carrinho = new Carrinho($cliente);
+        $carrinho->addProduto($Produto, $quant)
+        
         ;
     }
 }

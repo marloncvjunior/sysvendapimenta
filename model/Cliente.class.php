@@ -11,10 +11,10 @@
  *
  * @author will
  */
-class Usuario {
+class Cliente {
     
     private $codigo;
-    private $usuario;
+    private $nome;
     private $senha;
     private $email;
     
@@ -27,8 +27,8 @@ class Usuario {
     }
 
         
-    function getUsuario() {
-        return $this->usuario;
+    function getNome() {
+        return $this->nome;
     }
 
     function getSenha() {
@@ -39,8 +39,8 @@ class Usuario {
         return $this->email;
     }
 
-    function setUsuario($usuario) {
-        $this->usuario = $usuario;
+    function setNome($nome) {
+        $this->nome = $nome;
     }
 
     function setSenha($senha) {
