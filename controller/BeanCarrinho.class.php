@@ -20,25 +20,36 @@ class BeanCarrinho {
     private $carrinho;
 
     public function __construct() {
-        session_start();
-        $cliente = $_SESSION['usuario'];
+        if (isset($_SESSION['usuario'])) {
+            $cliente = $_SESSION['usuario'];
+        }else{
+           session_start(); 
+            $cliente = '';
+        }
+        //
+        
         $this->carrinho = new Carrinho($cliente);
-        $_SESSION['carrinho'] = $this->carrinho;
+        
     }
 
     public function add($codigo = null) {
         if (isset($codigo['codproducar']) && isset($codigo['quant'])) {
             echo 'carregou carrinho';
             $quant = $codigo['quant'];
-            $produto = new Produto();
+            $cod = $codigo['codproducar'];
+            $_SESSION['carrinho'][$cod] = $quant;
+            print_r($codigo);
+            print_r($_SESSION['carrinho']);
+           /* $produto = new Produto();
 
             $select = new Select();
-            $retorno = $select->exeQueryCod('produto', $codigo['codproducar']);
+            $retorno = $select->exeQueryCod('produto', $cod);
             //print_r(($retorno));
             $produto->arrayToProduct($retorno);
-            print_r($this->carrinho);
+            //print_r($this->carrinho);
             $this->carrinho->addProduto($produto, $quant);
-            $_SESSION['carrinho'] = $this->carrinho;
+            $_SESSION['carrinho'][$cod] = $this->carrinho;*/
+            
         } else {
             echo 'nao carregou carrinho';
         }

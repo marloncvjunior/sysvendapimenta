@@ -6,6 +6,9 @@ require (dirname(__FILE__) . "/controller/BeanCarrinho.class.php");
 BeanCliente::autentica($_REQUEST);
 $carrinho = new BeanCarrinho();
 $carrinho->add($_GET);
+if ($_GET['logout'] == 'true') {
+    session_destroy();
+}
 
 //print_r($carrinho);
 //var_dump($carrinho);
