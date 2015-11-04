@@ -5,10 +5,13 @@ require (dirname(__FILE__) . "/controller/BeanCliente.class.php");
 require (dirname(__FILE__) . "/controller/BeanCarrinho.class.php");
 BeanCliente::autentica($_REQUEST);
 $carrinho = new BeanCarrinho();
-$carrinho->add($_GET);
-if ($_GET['logout'] == 'true') {
+
+if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     session_destroy();
-}
+}else{}
+if (isset($_GET['finalizar']) && $_GET['finalizar'] == 'true') {
+    $carrinho->finaliza();
+}else{}
 
 //print_r($carrinho);
 //var_dump($carrinho);

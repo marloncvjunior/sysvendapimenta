@@ -55,7 +55,17 @@ class BeanCarrinho {
         }
     }
 
-    public static function rm($codigo = null) {
+    public function rm($codigo = null) {
+        
+    }
+    public function finaliza(){
+        $carrinho = BeanCliente::getClienteLogado();
+        if ($carrinho) {
+            header("Location: carrinho.php ");
+            echo "Fechando carrinho";
+        }  else {
+            echo "<script>alert('Faça o Login ou o cadastro');</script>";
+        }
         
     }
 

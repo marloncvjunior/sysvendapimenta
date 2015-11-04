@@ -12,43 +12,37 @@
  * @author 2898807
  */
 class Carrinho {
-    private $Codigo;
-    private $Cliente;
-    public $Produtos = array();
-    public $Quantidade = array();
+    private $codigo;
+    private $cliente;
+    private $item ;
     
     
-    public function __construct($Cliente) {
-        $this->Cliente = $Cliente;
+    
+    public function __construct() {
+       ;
     }
     
     
     function getCodigo() {
-        return $this->Codigo;
+        return $this->codigo;
     }
 
     function getCliente() {
-        return $this->Cliente;
+        return $this->cliente;
+    }
+    function setCliente($cliente){
+        $this->cliente = $cliente;
+    }
+    function getItem() {
+        return $this->item;
     }
 
-    function getProduto() {
-        return $this->Produto;
+    function setItem($item) {
+        $this->item[] = $item;
     }
 
-    function setCodigo($Codigo) {
-        $this->Codigo = $Codigo;
-    }
-
-    function addProduto($Produto,$quant) {
+        function getValorToral(){
         
-        array_push($this->Produtos,$Produto);
-        array_push($this->Quantidade,$quant);
-    }
-    function getValorToral(){
-        $ValorTotal = 0;
-        for ($i = 0; $i< count($this->Produtos); $i++){
-            $ValorTotal += $this->Quantidade[$i] * $this->Produtos[$i];
-        }
         return $ValorTotal;
     }
 

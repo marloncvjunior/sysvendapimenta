@@ -44,4 +44,11 @@ class BeanCliente {
             //echo("vazio");
         }
     }
+    public static function getClienteLogado(){
+        if (isset($_SESSION['usuario'])) {
+            return $_SESSION['usuario'];
+        }else{
+            return null;
+        }
+    }
 }  

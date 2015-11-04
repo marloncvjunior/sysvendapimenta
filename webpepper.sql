@@ -1,8 +1,59 @@
 ﻿# Host: localhost  (Version: 5.6.16)
-# Date: 2015-10-23 12:56:55
+# Date: 2015-11-04 19:51:59
 # Generator: MySQL-Front 5.3  (Build 4.234)
 
 /*!40101 SET NAMES utf8 */;
+
+#
+# Structure for table "carrinho"
+#
+
+DROP TABLE IF EXISTS `carrinho`;
+CREATE TABLE `carrinho` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for table "carrinho"
+#
+
+
+#
+# Structure for table "cliente"
+#
+
+DROP TABLE IF EXISTS `cliente`;
+CREATE TABLE `cliente` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `senha` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+#
+# Data for table "cliente"
+#
+
+INSERT INTO `cliente` VALUES (1,'wilton','wilton.tecti@gmail.com','1810'),(2,'lauro','lauro.ribeiro@gmail.com','1810');
+
+#
+# Structure for table "itemcarrinho"
+#
+
+DROP TABLE IF EXISTS `itemcarrinho`;
+CREATE TABLE `itemcarrinho` (
+  `codigo` int(11) NOT NULL AUTO_INCREMENT,
+  `produto` int(11) DEFAULT NULL,
+  `quantidade` int(11) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+#
+# Data for table "itemcarrinho"
+#
+
 
 #
 # Structure for table "produto"
@@ -17,7 +68,7 @@ CREATE TABLE `produto` (
   `imagem` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `codigo` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 #
 # Data for table "produto"
