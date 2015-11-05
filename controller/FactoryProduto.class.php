@@ -1,6 +1,6 @@
 <?php
-require dirname(__FILE__).'../../model/Produto.class.php';
-require dirname(__FILE__).'../db/Select.class.php';
+require_once dirname(__DIR__).'/model/Produto.class.php';
+require_once dirname(__FILE__).'/DBSelecte.class.php';
 class FactoryProduto {
     public function __construct() {
         ;

@@ -1,6 +1,7 @@
 <?php
 
-require(dirname(__DIR__) . "..\model\Cliente.class.php");
+require (dirname(__DIR__) . "/model/Cliente.class.php");
+require_once (dirname(__FILE__) . '/DBSelecte.class.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -21,7 +22,7 @@ class BeanCliente {
 
             $usuario = $parametro['email'];
             $senha = $parametro['senha'];
-            $consulta = new Select();
+            $consulta = new Selecte();
             $userlist = $consulta->exeQuery("cliente");
             //print_r($userlist);
             foreach ($userlist as $key => $value) {
@@ -36,7 +37,8 @@ class BeanCliente {
                         $cliente->setNome($value['nome']);
                         $_SESSION['usuario'] = $cliente;
 
-                        //echo "Bem vindo " . $cliente->getNome();
+                        echo "Bem vindo " . $cliente->getNome();
+                        //echo "<script>location.href='carrinho.php'</script>";
                     }
                 }
             }
@@ -46,6 +48,7 @@ class BeanCliente {
     }
     public static function getClienteLogado(){
         if (isset($_SESSION['usuario'])) {
+           
             return $_SESSION['usuario'];
         }else{
             return null;

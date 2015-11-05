@@ -1,16 +1,17 @@
 <?php
-require (dirname(__FILE__) . './layout/header.php');
+include (dirname(__FILE__) . './layout/header.php');
 require (dirname(__FILE__) . "/controller/BeanShopping.class.php");
-require (dirname(__FILE__) . "/controller/BeanCliente.class.php");
 require (dirname(__FILE__) . "/controller/BeanCarrinho.class.php");
-BeanCliente::autentica($_REQUEST);
+include (dirname(__FILE__) . '/layout/footer.php');
+
 $carrinho = new BeanCarrinho();
+$carrinho->add($_GET);
 
 if (isset($_GET['logout']) && $_GET['logout'] == 'true') {
     session_destroy();
 }else{}
-if (isset($_GET['finalizar']) && $_GET['finalizar'] == 'true') {
-    $carrinho->finaliza();
+if (isset($_GET['resumo']) && $_GET['resumo'] == 'true') {
+    $carrinho->resumo();
 }else{}
 
 //print_r($carrinho);
@@ -74,16 +75,14 @@ if (isset($_GET['finalizar']) && $_GET['finalizar'] == 'true') {
 
                 </div>
                 <ul class="nav">
-                    <li class="">Cliente:<?php echo "".$_SESSION['carrinho']['cliente']->getNome(); ;?> </li>
-                    <li class="">Total da Compra: R$ <?php echo "".$_SESSION['usuario']->getValorTotal();?> </li> 
+                    <li class="">Cliente:<?php echo "";?> </li>
+                    <li class="">Total da Compra: R$ <?php echo "";?> </li> 
                     <li>Total de Itens:<?php echo "";?></li>
-                    <li><a class="btn btn-link">Lista de Itens</a></li>
+                    <li><a class="btn btn-link" href="main.php?resumo=true">Lista de Itens</a></li>
                 </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <?php
-    require (dirname(__FILE__) . './layout/footer.php');
-    ?>
 

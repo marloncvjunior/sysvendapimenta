@@ -1,6 +1,6 @@
 <?php
 //Classe utilizada para conecção com o banco de dados
-class Connection {
+class Conneccao {
     private $dsn = 'mysql:dbname=webpepper;host=127.0.0.1';
     private $username = "root";
     private $passwd = "";

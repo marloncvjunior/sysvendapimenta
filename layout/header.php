@@ -25,19 +25,15 @@
             </div>
             <div class="collapse navbar-collapse pull-right" >
                 <ul class="nav navbar-nav ">
-                    <li class="active"><a href="#">Link 1</a></li>
-                    <li><a href="#">Link 2</a></li>
-                    <li><a href="#">Link 3</a></li>
+                    <li class="active"><a href="main.php">Home</a></li>
+                    <li><a class="active" href="carrinho.php">Carrinho</a></li>
+                    <li><a class="active" href="main.php?logout=true">LogOut</a></li>
                     <li></li>
                 </ul>
                 <div class="navbar navbar-form pull-right">
-                    <form action="<?php echo $_SERVER['SCRIPT_NAME'];?>" method="GET">
-                        <label class="label" for="email">Email:</label> 
-                        <input type="text" name="email"/>
-                        <label class="label" for="senha"> Senha:</label>
-                        <input type="password" name="senha"/>
-                        <button class="btn btn-success" type="submit">Login</button>
-                    </form>
+                   
+                    <a href="login.php"><button class="btn btn-success">Login/Cadastro</button></a>
+             
                 </div>
             </div>
 

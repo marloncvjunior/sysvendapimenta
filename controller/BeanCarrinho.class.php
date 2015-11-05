@@ -1,8 +1,10 @@
 <?php
 
-//require(dirname(__DIR__) . "..\model\Cliente.class.php");
-require(dirname(__DIR__) . "..\model\Carrinho.class.php");
-require(dirname(__DIR__) . "..\model\Produto.class.php");
+require(dirname(__DIR__) . "/model/Carrinho.class.php");
+require(dirname(__DIR__) . "/model/Produto.class.php");
+require (dirname(__DIR__) . "/controller/BeanCliente.class.php");
+require_once dirname(__FILE__).'/FactoryProduto.class.php';
+require_once dirname(__FILE__).'/FactoryItemCarrinho.class.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,7 +30,7 @@ class BeanCarrinho {
         }
         //
         
-        $this->carrinho = new Carrinho($cliente);
+        $this->carrinho = new Carrinho();
         
     }
 
@@ -38,8 +40,8 @@ class BeanCarrinho {
             $quant = $codigo['quant'];
             $cod = $codigo['codproducar'];
             $_SESSION['carrinho'][$cod] = $quant;
-            print_r($codigo);
-            print_r($_SESSION['carrinho']);
+            //print_r($codigo);
+            //print_r($_SESSION['carrinho']);
            /* $produto = new Produto();
 
             $select = new Select();
@@ -58,13 +60,19 @@ class BeanCarrinho {
     public function rm($codigo = null) {
         
     }
-    public function finaliza(){
-        $carrinho = BeanCliente::getClienteLogado();
-        if ($carrinho) {
-            header("Location: carrinho.php ");
+    public function resumo(){
+        $cliente = BeanCliente::getClienteLogado();
+        $array = $_SESSION['carrinho'];
+        $this->carrinho->setItem(FactoryItemCarrinho::createItemCarrinhoArray($array));
+        if ($cliente) {
+            //header("Location: carrinho.php ");
             echo "Fechando carrinho";
+            //echo "<script>location.href='carrinho.php'</script>";
+           
         }  else {
             echo "<script>alert('Faça o Login ou o cadastro');</script>";
+            //header("Location: login.php ");
+           // echo "<script>location.href='login.php'</script>";
         }
         
     }
