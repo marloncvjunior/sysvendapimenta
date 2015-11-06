@@ -4,21 +4,28 @@ require_once dirname(__FILE__).'/FactoryProduto.class.php';
 require_once dirname(__DIR__) .'/model/Produto.class.php';
 
 class FactoryItemCarrinho {
-    public static function createItemCarrinhoArray($array){
-        foreach ($array as $value) {
+    public function createItemCarrinhoArray($array){
+        $vetor = array() ;
+        foreach ($array as $key => $value) {
             print_r($value);
-            echo "_____";
-         print_r(array_values($array));
+            echo "--";
+            print_r($key);
+            echo "--";
+            
+        $vetor[] = $this->createItemCarrinhoQueryBD($key, $value);
+            
         }
+        return $vetor;
     }
-    public static function createItemCarrinho(){
+    private function createItemCarrinho(){
         return new ItemCarrinho();
     }
-     public static function createItemCarrinhoQueryBD($codigo){
+     private function createItemCarrinhoQueryBD($codigo,$quant){
+          //echo "<script>alert('Foi');</script>";
          $item = $this->createItemCarrinho();
-         $item->setProduto($produto);
-         $item->setQuantidade($quantidade);
-         
+         $item->setProduto(FactoryProduto::createProduto($codigo));
+         $item->setQuantidade($quant);
+         //print_r($item);
          
         return  $item;
     }

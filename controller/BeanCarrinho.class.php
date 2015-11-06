@@ -22,6 +22,7 @@ class BeanCarrinho {
     private $carrinho;
 
     public function __construct() {
+        //session_start();
         if (isset($_SESSION['usuario'])) {
             $cliente = $_SESSION['usuario'];
         }else{
@@ -62,12 +63,17 @@ class BeanCarrinho {
     }
     public function resumo(){
         $cliente = BeanCliente::getClienteLogado();
+        //print_r($cliente);
+        $this->carrinho->setCliente($cliente);
+        $fabricaitemcarrinho = new FactoryItemCarrinho();
         $array = $_SESSION['carrinho'];
-        $this->carrinho->setItem(FactoryItemCarrinho::createItemCarrinhoArray($array));
+        $this->carrinho->setItem($fabricaitemcarrinho->createItemCarrinhoArray($array));
+        print_r($this->carrinho);
+        $_SESSION['pedido'] = serialize($this->carrinho);
         if ($cliente) {
-            //header("Location: carrinho.php ");
-            echo "Fechando carrinho";
-            //echo "<script>location.href='carrinho.php'</script>";
+           // header("Location: carrinho.php ");
+            //echo "Fechando carrinho";
+            echo "<script>location.href='carrinho.php'</script>";
            
         }  else {
             echo "<script>alert('Faça o Login ou o cadastro');</script>";

@@ -38,7 +38,7 @@ class BeanCliente {
                         $_SESSION['usuario'] = $cliente;
 
                         echo "Bem vindo " . $cliente->getNome();
-                        //echo "<script>location.href='carrinho.php'</script>";
+                        echo "<script>location.href='main.php'</script>";
                     }
                 }
             }
