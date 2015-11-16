@@ -12,9 +12,9 @@
  * @author 2898807
  */
 class ItemCarrinho {
-    private $codigo;
-    private $quantidade;
-    private $produto;
+    public $codigo;
+    public $quantidade;
+    public $produto;
     
     public function __construct() {
         ;
@@ -29,7 +29,7 @@ class ItemCarrinho {
     }
 
     function getProduto() {
-        return $this->produto;
+        return ($this->produto);
     }
 
     function setCodigo($codigo) {

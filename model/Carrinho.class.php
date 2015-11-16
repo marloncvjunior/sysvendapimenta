@@ -1,4 +1,6 @@
 <?php
+require_once dirname(__FILE__). '/Cliente.class.php';
+require_once dirname(__FILE__) .'/ItemCarrinho.class.php';
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,33 +14,35 @@
  * @author 2898807
  */
 class Carrinho {
-    private $codigo;
-    private $cliente;
-    private $item ;
+    public $codigo;
+    public $cliente;
+    public $item ;
     
     
     
     public function __construct() {
        ;
     }
-    
+    function setCodigo($codigo){
+        $this->codigo = $codigo;
+    }
     
     function getCodigo() {
         return $this->codigo;
     }
 
     function getCliente() {
-        return $this->cliente;
+        return ($this->cliente);
     }
-    function setCliente($cliente){
-        $this->cliente = $cliente;
+    function setCliente(Cliente $cliente){
+        $this->cliente = ($cliente);
     }
     function getItem() {
-        return $this->item;
+        return ($this->item);
     }
 
     function setItem($item) {
-        $this->item[] = $item;
+        $this->item = ($item);
     }
 
         function getValorToral(){

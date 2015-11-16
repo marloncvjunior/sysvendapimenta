@@ -1,6 +1,6 @@
 <?php
 
-require (dirname(__DIR__) . "/model/Cliente.class.php");
+require_once (dirname(__DIR__) . "/model/Cliente.class.php");
 require_once (dirname(__FILE__) . '/DBSelecte.class.php');
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -51,7 +51,10 @@ class BeanCliente {
            
             return $_SESSION['usuario'];
         }else{
-            return null;
+           
+             echo "<script>alert('Entre com o seu usuario ou crie uma conta');</script>";
+              echo "<script>location.href='login.php'</script>";
+               return null;
         }
     }
 }  

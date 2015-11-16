@@ -13,10 +13,10 @@
  */
 class Cliente {
     
-    private $codigo;
-    private $nome;
-    private $senha;
-    private $email;
+    public $codigo;
+    public $nome;
+    public $senha;
+    public $email;
     
     function getCodigo() {
         return $this->codigo;

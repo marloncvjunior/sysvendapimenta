@@ -2,9 +2,13 @@
 include (dirname(__FILE__) . '/layout/header.php');
 include (dirname(__FILE__) . '/layout/footer.php');
 require_once dirname(__FILE__). '/model/Carrinho.class.php';
-session_start();
-print_r($_SESSION['pedido']);
+//session_start();
+//print_r($_SESSION['pedido']);
+  session_start(); 
 if ($_SESSION['pedido']) {
+    var_dump(($_SESSION['pedido']));
+    //var_dump(unserialize(($_SESSION['pedido'])));
+   // var_dump(unserialize(json_decode($_SESSION['pedido'])));
     $pedido = $_SESSION['pedido'];
 }else{
     die("PEDIDO VAZIO");
@@ -23,8 +27,9 @@ if ($_SESSION['pedido']) {
                 <div class="row">
                     <div class="col-md-12">
                         <?php
-                        
-                        echo $pedido->getCliente()->getNome();
+                       // print_r(($pedido));
+                       print_r(unserialize($pedido));
+                       // echo $pedido->getCliente()->getNome();
                         ?>
                     </div>
                 </div> 
@@ -38,7 +43,7 @@ if ($_SESSION['pedido']) {
                         </thead>
                         <tbody>
                             <?php
-                            foreach ($pedido->getItem() as $key => $value) {
+                            foreach (unserialize($pedido->getItem() )as $key => $value) {
                                 print_r(value);
                             }
                             ?>

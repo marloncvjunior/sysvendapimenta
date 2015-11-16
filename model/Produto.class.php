@@ -12,11 +12,11 @@
  * @author 2898807
  */
 class Produto {
-    private $codigo;
-    private $descricao;
-    private $estoque;
-    private $preco;
-    private $imagem;
+    public $codigo;
+    public $descricao;
+    public $estoque;
+    public $preco;
+    public $imagem;
     
     function getCodigo() {
         return $this->codigo;

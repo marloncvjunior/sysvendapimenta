@@ -7,10 +7,10 @@ class FactoryItemCarrinho {
     public function createItemCarrinhoArray($array){
         $vetor = array() ;
         foreach ($array as $key => $value) {
-            print_r($value);
-            echo "--";
-            print_r($key);
-            echo "--";
+            //print_r($value);
+            //echo "--";
+            //print_r($key);
+            //echo "--";
             
         $vetor[] = $this->createItemCarrinhoQueryBD($key, $value);
             
@@ -22,7 +22,7 @@ class FactoryItemCarrinho {
     }
      private function createItemCarrinhoQueryBD($codigo,$quant){
           //echo "<script>alert('Foi');</script>";
-         $item = $this->createItemCarrinho();
+         $item =  new ItemCarrinho();
          $item->setProduto(FactoryProduto::createProduto($codigo));
          $item->setQuantidade($quant);
          //print_r($item);
