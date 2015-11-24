@@ -23,7 +23,7 @@ class Cliente {
     }
 
     function setCodigo($codigo) {
-        $this->codigo = $codigo;
+        $this->codigo =(int) $codigo;
     }
 
         

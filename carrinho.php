@@ -1,19 +1,12 @@
 <?php
 include (dirname(__FILE__) . '/layout/header.php');
 include (dirname(__FILE__) . '/layout/footer.php');
-require_once dirname(__FILE__). '/model/Carrinho.class.php';
-//session_start();
-//print_r($_SESSION['pedido']);
-  session_start(); 
-if ($_SESSION['pedido']) {
-    var_dump(($_SESSION['pedido']));
-    //var_dump(unserialize(($_SESSION['pedido'])));
-   // var_dump(unserialize(json_decode($_SESSION['pedido'])));
-    $pedido = $_SESSION['pedido'];
-}else{
-    die("PEDIDO VAZIO");
-}
+require_once dirname(__FILE__) . '/model/Carrinho.class.php';
+require_once dirname(__FILE__) . '/controller/BeanPedido.class.php';
+$pedido = new BeanPedido();
+$listpedido = null;
 
+print_r($listpedido);
 ?>
 
 <div class="container">
@@ -27,33 +20,27 @@ if ($_SESSION['pedido']) {
                 <div class="row">
                     <div class="col-md-12">
                         <?php
-                       // print_r(($pedido));
-                       print_r(unserialize($pedido));
-                       // echo $pedido->getCliente()->getNome();
                         ?>
                     </div>
                 </div> 
                 <div class="row">
                     <table class="table">
                         <thead>
-                            <th>Produto</th>
-                            <th>Quantidade</th>
-                            <th>Valor Unitário</th>
-                            <th>Subtotal</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitário</th>
+                        <th>Subtotal</th>
                         </thead>
-                        <tbody>
-                            <?php
-                            foreach (unserialize($pedido->getItem() )as $key => $value) {
-                                print_r(value);
-                            }
-                            ?>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
+                        <?php
+                        session_start();
+                        if (isset($_SESSION['codcarrinho'])) {
+                            
+                            $codcar = $_SESSION['codcarrinho'];
+                            $listpedido = ($pedido->listarPedido($codcar));
+                            print_r($codcar);
+                            include_once './layout/listcarrinho.php';
+                        }
+                        ?>
                     </table>
 
 

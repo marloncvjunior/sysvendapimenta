@@ -50,7 +50,7 @@ if (isset($_GET['resumo']) && $_GET['resumo'] == 'true') {
                                     <h3>{$value['descricao']}</h3>
                                     <p>...</p>
                                     <form>
-                                    <p><label for='quant'>Quantidade: </label> <input type='text' name='quant' size='6'/>
+                                    <p><label for='quant'>Quant: </label> <input type='number' name='quant' size='3'/>
                                     <button type='submit' formaction='".$_SERVER['SCRIPT_NAME']."'name='codproducar' value='".$value['codigo']."' class='btn btn-primary' role='button'>Adicionar no Carrinho
                                         </button>
                                         </a> 

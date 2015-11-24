@@ -5,9 +5,8 @@ require_once(dirname(__DIR__) . "/model/Produto.class.php");
 require_once (dirname(__DIR__) . "/controller/BeanCliente.class.php");
 require_once dirname(__FILE__) . '/FactoryProduto.class.php';
 require_once dirname(__FILE__) . '/FactoryItemCarrinho.class.php';
-require_once dirname(__FILE__) .'/DBInsert.class.php';
-require_once dirname(__FILE__) .'/DBDelete.class.php';
-
+require_once dirname(__FILE__) . '/DBInsert.class.php';
+require_once dirname(__FILE__) . '/DBDelete.class.php';
 
 class BeanCarrinho {
 
@@ -27,22 +26,19 @@ class BeanCarrinho {
     }
 
     public function add($codigo = null) {
+
+        $inserir = new Insert();
+        if (!isset($_SESSION['codcarrinho'])) {
+            $_SESSION['codcarrinho'] = $inserir->saveCarrinho();
+            //print_r($_SESSION);
+        } else {
+            echo "Está criado";
+        }
         if (isset($codigo['codproducar']) && isset($codigo['quant'])) {
-            echo 'carregou carrinho';
+            echo 'carregou carrinho, cod carrinho: ';
             $quant = $codigo['quant'];
             $cod = $codigo['codproducar'];
-            $_SESSION['carrinho'][$cod] = $quant;
-            //print_r($codigo);
-            //print_r($_SESSION['carrinho']);
-            /* $produto = new Produto();
-
-              $select = new Select();
-              $retorno = $select->exeQueryCod('produto', $cod);
-              //print_r(($retorno));
-              $produto->arrayToProduct($retorno);
-              //print_r($this->carrinho);
-              $this->carrinho->addProduto($produto, $quant);
-              $_SESSION['carrinho'][$cod] = $this->carrinho; */
+            ($inserir->saveItemCar($_SESSION['codcarrinho'], array($cod => $quant)));
         } else {
             echo 'nao carregou carrinho';
         }
@@ -51,36 +47,22 @@ class BeanCarrinho {
     public function rm() {
         $delete = new DBDelete();
         $delete->exeQuery($codigo, $tabela);
-        
-        
     }
 
     public function resumo() {
-        $cliente = BeanCliente::getClienteLogado();
+       /* $cliente = BeanCliente::getClienteLogado();
         if ($cliente) {
-            // header("Location: carrinho.php ");
-            //echo "Fechando carrinho";
-            
-            //print_r($cliente);
-            //$this->carrinho->setCliente($cliente);
-            //$fabricaitemcarrinho = new FactoryItemCarrinho();
-            //$array = $_SESSION['carrinho'];
-            //$this->carrinho->setItem($fabricaitemcarrinho->createItemCarrinhoArray($array));
-            $produto = $_SESSION['carrinho'];
-            print_r($produto);
-           $inserir = new Insert();
-           print_r ($inserir->saveCarrinho($produto)) ;
-           // echo "<script>location.href='carrinho.php'</script>";
+
+            echo "Cod carrinho = " . $_SESSION['codcarrinho'];
+            // echo "<script>location.href='carrinho.php'</script>";
         } else {
             echo "<script>alert('Faça o Login ou o cadastro');</script>";
             //header("Location: login.php ");
-             echo "<script>location.href='login.php'</script>";
-        }
-        //session_start(); 
-        // print_r($this->carrinho);
-        // $_SESSION['pedido'] = ($this->carrinho);
-       // $_SESSION['pedido'] = (serialize($this->carrinho));
-        // print_r(json_decode(($_SESSION['pedido'])));
+            echo "<script>location.href='login.php'</script>";
+        }*/
+
+        // print_r(array('carrinho','itemcarrinho','cliente'));
+        echo "<script>location.href='carrinho.php'</script>";
     }
 
 }

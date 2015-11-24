@@ -18,7 +18,7 @@ class BeanCliente {
     public static function autentica($parametro = null) {
 
         if (isset($parametro['email'])) {
-           // echo "cheio";
+            // echo "cheio";
 
             $usuario = $parametro['email'];
             $senha = $parametro['senha'];
@@ -38,23 +38,57 @@ class BeanCliente {
                         $_SESSION['usuario'] = $cliente;
 
                         echo "Bem vindo " . $cliente->getNome();
-                        echo "<script>location.href='main.php'</script>";
+                        // echo "<script>location.href='main.php'</script>";
+                        print_r($cliente);
                     }
                 }
             }
-        }  else {
+        } else {
             //echo("vazio");
         }
     }
-    public static function getClienteLogado(){
+
+    public static function getClienteLogado() {
         if (isset($_SESSION['usuario'])) {
-           
+
             return $_SESSION['usuario'];
-        }else{
-           
-             echo "<script>alert('Entre com o seu usuario ou crie uma conta');</script>";
-              echo "<script>location.href='login.php'</script>";
-               return null;
+        } else {
+            //die("<a href='login.php'>Realize o Login/Cadastro !!!! </a>");
+            // echo "<script>alert('Entre com o seu usuario ou crie uma conta');</script>";
+            //echo "<script>location.href='login.php'</script>";
+            $cliente = new Cliente();
+            $cliente->setCodigo('1');
+            $cliente->setNome('Visitante');
+
+            return $cliente;
         }
     }
-}  
+
+    public static function cadastraCliente($cliente) {
+        if (isset($cliente['nome']) && isset($cliente['email']) || isset($cliente['senha'])) {
+            $inserir = new Insert();
+            $select = new Selecte();
+            $listcliente = $select->exeQuery('cliente');
+            $existe = false;
+            foreach ($listcliente as $key => $value) {
+                if ($value['email'] == $cliente['email']) {
+                    $existe = true;
+                }
+            }
+            if ($existe) {
+                //echo "<script>alert('cliente já cadastrado');</script>";
+                die("<a href='login.php'>Cliente já cadastrado</a>");
+                //echo "asd";
+                exit();
+            } else {
+                $inserir->exeInsert('cliente', $cliente);
+            }
+
+
+            //print_r($cliente);
+        } else {
+            echo "Não deu";
+        }
+    }
+
+}

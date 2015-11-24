@@ -24,10 +24,9 @@ class Insert {
         
     }
     
-    public function saveCarrinho( $Dados){
-        $codpedido = null;
-        $cliente = null;
+    public function saveCarrinho(){
         $cliente = BeanCliente::getClienteLogado();
+        print_r($cliente);
         //print_r($cliente);
         $this->Sql = "INSERT INTO carrinho (codigo,cliente) VALUES (null,".$cliente->getCodigo() ."  );";
         $con = $this->Conn->conectar();
@@ -40,11 +39,11 @@ class Insert {
         foreach ( $stmt->Fetch() as $value) {
             $retorno = $value;
         }
-       $codcarrinho = ($retorno);
-       $this->saveItemCar($codcarrinho,$Dados);
+      
+       return $retorno;
         
         
-    }private function saveItemCar($codcarrinho, $Dados){
+    }public function saveItemCar($codcarrinho, $Dados){
         $sql = null;
         $sql = "INSERT INTO itemcarrinho (codigo,carrinho, quantidade, produto) VALUES ";
         print_r($Dados);
@@ -63,13 +62,18 @@ class Insert {
 
     private function GerSql(){
         $Fileds = implode(',', array_keys($this->Dados));
+        //$Places =':'. implode(', :', array_keys($this->Dados));
         $Places =':'. implode(', :', array_keys($this->Dados));
-        $sql = "INSERT INTO {$this->Tabela} ({$Fileds}) VALUES ({$Places});";
+        $this->Sql = "INSERT INTO {$this->Tabela} ({$Fileds}) VALUES ({$Places});";
         
-        //echo $sql;
+        echo $this->Sql;
+        $this->prepareExec();
     }
      private function prepareExec(){
-        
-        
+        $con = $this->Conn->conectar();
+        //print_r($con);
+        $stmt = $con->prepare($this->Sql);
+        $stmt->execute($this->Dados);
+             
     }
 }

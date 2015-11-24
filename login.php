@@ -1,7 +1,13 @@
 <?php
 require (dirname(__FILE__) . '/layout/header.php');
 require dirname(__FILE__) . '/controller/BeanCliente.class.php';
+require_once dirname(__FILE__).'/controller/DBInsert.class.php';
 BeanCliente::autentica($_REQUEST);
+BeanCliente::cadastraCliente($_REQUEST);
+$cliente = BeanCliente::getClienteLogado();
+if ($cliente->getCodigo() != 1){
+    header("location:venda.php");
+}
 ?>
 
 <div class="container">
@@ -18,9 +24,9 @@ BeanCliente::autentica($_REQUEST);
                         
                        <form action="<?php echo $_SERVER['SCRIPT_NAME'];?>" method="POST">
                         <label class="label label-info" for="email">Email:</label> 
-                        <input type="text" name="email"/><br>
+                        <input type="text" name="email" required="true"/><br>
                         <label class="label label-info" for="senha"> Senha:</label>
-                        <input type="password" name="senha"/><br>
+                        <input type="password" name="senha" required="true"/><br>
                         <button class="btn btn-success" type="submit">Login</button>
                     </form>
                     </div>
@@ -29,10 +35,16 @@ BeanCliente::autentica($_REQUEST);
          
             <div class="col-md-6">
                 <div class='thumbnail center'>
-                    Cadastro
-                    
-                    Usuario:
-                    Senha:
+                   <form action="<?php echo $_SERVER['SCRIPT_NAME'];?>" method="POST">
+                       <p>Cadastro</p>
+                        <label class="label label-info" for="nome"  >Nome:</label> 
+                        <input type="text" name="nome" class="" required="true"/><br>
+                        <label class="label label-info" for="email">Email:</label> 
+                        <input type="text" name="email" required="true"/><br>
+                        <label class="label label-info" for="senha"> Senha:</label>
+                        <input type="password" name="senha" required="true"/><br>
+                        <button class="btn btn-success" type="submit" value="cad">Cadastro</button>
+                    </form>
 
                 </div>
 
