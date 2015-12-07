@@ -10,7 +10,9 @@ class BeanPedido {
     public function listarPedido($codcar) {
         $select = new Selecte();
         $pedido = $select->exeQueryJoinListAllPedido($codcar);
+        // print_r($pedido);
         return $pedido;
+       
         
         
     }

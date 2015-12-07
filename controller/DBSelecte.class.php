@@ -28,7 +28,14 @@ class Selecte {
         $this->Sql = "Select * from {$this->Tabela}";
         $array = $this->prepareExec();
         //print_r($array);
-        return $array;
+        return $array->FetchAll();
+    }
+      public function exeQueryCampo($tabela, $codigo,$campo) {
+        $this->Tabela = $tabela;
+        $this->Sql = "Select * from {$this->Tabela} where {$campo} =" . $codigo;
+        $array = $this->prepareExec();
+        //print_r($array);
+        return $array->FetchAll(PDO::FETCH_ASSOC);
     }
 
     public function exeQueryCod($tabela, $codigo) {
@@ -36,7 +43,7 @@ class Selecte {
         $this->Sql = "Select * from {$this->Tabela} where codigo =" . $codigo;
         $array = $this->prepareExec();
         //print_r($array);
-        return $array;
+        return $array->FetchAll();
     }
 
     public function exeQueryJoinListAllPedido($codcar) {
@@ -47,7 +54,7 @@ class Selecte {
                       where carrinho.codigo = {$codcar} group by produto.codigo";
          $array = $this->prepareExec();
         //print_r($array);
-        return $array;
+        return $array->FetchAll();
        
     }
 
@@ -57,7 +64,9 @@ class Selecte {
         //print_r($con);
         $stmt = $con->prepare($this->Sql);
         $stmt->execute();
-        return $stmt->FetchAll();
+        return $stmt;
+        
+        
     }
 
 }

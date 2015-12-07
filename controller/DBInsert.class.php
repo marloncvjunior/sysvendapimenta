@@ -11,7 +11,17 @@ class Insert {
     function __construct() {
         $this->Conn = new Conneccao();
     }
-
+    public function exeInsertMultiplos($tabela,$dados){
+        foreach ($dados as $key => $value) {
+            $this->exeInsert($tabela, $value);
+            //print_r($value);
+                // echo '<br>';
+            
+           
+            //$this->exeInsert($tabela, $value);
+        }
+       
+    }
 
     public function exeInsert($tabela,$Dados){
         $this->Dados = (array) $Dados;
@@ -75,5 +85,17 @@ class Insert {
         $stmt = $con->prepare($this->Sql);
         $stmt->execute($this->Dados);
              
+    }
+    public function selectUltimoCod($tabela,$campo){
+         $con = $this->Conn->conectar();
+        $stmt = $con->prepare("SELECT MAX({$campo}) FROM {$tabela}");
+        $stmt->execute();
+        $retorno = null;
+        foreach ( $stmt->Fetch() as $value) {
+            $retorno = $value;
+        }
+      
+       return $retorno;
+        
     }
 }

@@ -21,3 +21,6 @@ body {
     padding-bottom: 0px;
    
 }
+.borda{
+    border: 1px solid black;
+}

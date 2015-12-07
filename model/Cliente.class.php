@@ -17,7 +17,29 @@ class Cliente {
     public $nome;
     public $senha;
     public $email;
+    private $codcadnac;
+    private $codcadest;
+    private $endereco;
     
+    
+    function getCodCadNac(){
+        return $this->codcadnac;
+    }
+    function setCodCadNac($codcadnac){
+       $this->codcadnac = $codcadnac;
+    }
+    function getCodCadEac(){
+        return $this->codcadest;
+    }
+    function setCodCadEst($codcadest){
+       $this->codcadest = $codcadest;
+    }
+    function getEndereco(){
+        return $this->endereco;
+    }
+    function setEndereco($endereco){
+        $this->endereco = $endereco;
+    }
     function getCodigo() {
         return $this->codigo;
     }

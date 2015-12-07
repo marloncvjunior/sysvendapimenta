@@ -1,13 +1,24 @@
 <?php
-require (dirname(__FILE__) . '/layout/header.php');
-require dirname(__FILE__) . '/controller/BeanCliente.class.php';
+require_once (dirname(__FILE__) . '/layout/header.php');
+require_once dirname(__FILE__) . '/controller/BeanCliente.class.php';
 require_once dirname(__FILE__).'/controller/DBInsert.class.php';
-BeanCliente::autentica($_REQUEST);
-BeanCliente::cadastraCliente($_REQUEST);
-$cliente = BeanCliente::getClienteLogado();
-if ($cliente->getCodigo() != 1){
-    header("location:venda.php");
+
+
+
+if(isset($_REQUEST['acao'])){
+if ($_REQUEST['acao'] == "login") {
+    BeanCliente::autentica($_REQUEST);
+   
+}else{
+    BeanCliente::cadastraCliente($_REQUEST);
+ 
 }
+}else{
+    echo "não carregou usuario"; 
+}
+
+
+
 ?>
 
 <div class="container">
@@ -27,7 +38,7 @@ if ($cliente->getCodigo() != 1){
                         <input type="text" name="email" required="true"/><br>
                         <label class="label label-info" for="senha"> Senha:</label>
                         <input type="password" name="senha" required="true"/><br>
-                        <button class="btn btn-success" type="submit">Login</button>
+                        <button class="btn btn-success" type="submit" value="login" name="acao">Login</button>
                     </form>
                     </div>
                 </div>
@@ -43,7 +54,7 @@ if ($cliente->getCodigo() != 1){
                         <input type="text" name="email" required="true"/><br>
                         <label class="label label-info" for="senha"> Senha:</label>
                         <input type="password" name="senha" required="true"/><br>
-                        <button class="btn btn-success" type="submit" value="cad">Cadastro</button>
+                        <button class="btn btn-success" type="submit" value="cad" name="acao">Cadastro</button>
                     </form>
 
                 </div>

@@ -35,6 +35,9 @@ class BeanCliente {
                         $cliente->setCodigo($value['codigo']);
                         $cliente->setEmail($value['email']);
                         $cliente->setNome($value['nome']);
+                        $cliente->setCodCadEst($value['codcadest']);
+                        $cliente->setCodCadNac($value['codcadnac']);
+                        $cliente->setEndereco($value['endereco']);
                         $_SESSION['usuario'] = $cliente;
 
                         echo "Bem vindo " . $cliente->getNome();
@@ -65,7 +68,8 @@ class BeanCliente {
     }
 
     public static function cadastraCliente($cliente) {
-        if (isset($cliente['nome']) && isset($cliente['email']) || isset($cliente['senha'])) {
+        unset($cliente['acao']);
+        if (isset($cliente['nome']) && isset($cliente['email']) || isset($cliente['senha'])){
             $inserir = new Insert();
             $select = new Selecte();
             $listcliente = $select->exeQuery('cliente');
@@ -82,6 +86,8 @@ class BeanCliente {
                 exit();
             } else {
                 $inserir->exeInsert('cliente', $cliente);
+                BeanCliente::autentica($cliente);
+               // print_r($cliente);
             }
 
 
