@@ -32,15 +32,15 @@ class BeanCarrinho {
             $_SESSION['codcarrinho'] = $inserir->saveCarrinho();
             //print_r($_SESSION);
         } else {
-            echo "Está criado";
+           // echo "Está criado";
         }
         if (isset($codigo['codproducar']) && isset($codigo['quant'])) {
-            echo 'carregou carrinho, cod carrinho: ';
+            //echo 'carregou carrinho, cod carrinho: ';
             $quant = $codigo['quant'];
             $cod = $codigo['codproducar'];
             ($inserir->saveItemCar($_SESSION['codcarrinho'], array($cod => $quant)));
         } else {
-            echo 'nao carregou carrinho';
+          //  echo 'nao carregou carrinho';
         }
     }
 

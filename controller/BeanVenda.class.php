@@ -16,16 +16,28 @@ class BeanVenda {
     }
     public function gravarVenda($venda){
         $select = new Selecte();
-        print_r($venda);
-        $itens = $select->exeQueryCampo('itemcarrinho', $venda['carrinho'], 'carrinho');
-        print_r($itens);
-        foreach ($itens as $key => $value) {
-           
-        }
         $gravar = new Insert();
+        //print_r($venda);
         $gravar->exeInsert('venda', $venda);
-        $gravar->exeInsertMultiplos('itemvenda', $itens);
+        $itens = $select->exeQueryCampo('itemcarrinho', $venda['carrinho'], 'carrinho');
+        //print_r($itens);
         $ultimo = $gravar->selectUltimoCod('venda','codigo');
+        foreach ($itens as $key => $value) {
+         
+            $value['venda'] = $ultimo;
+            unset($value['carrinho']);
+              // print_r($value);
+           // echo "<Br>";
+            $gravar->exeInsert('itemvenda', $value);
+        }
+         unset($_SESSION['codcarrinho']);
+        echo "<script>alert('Venda Realizada com sucesso !!!!');</script>";
+        echo "<script>location.href = 'main.php';</script>";
+       
+        
+        
+      //  $gravar->exeInsertMultiplos('itemvenda', $itens);
+        
        
     }
 }

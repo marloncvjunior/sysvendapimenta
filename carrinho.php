@@ -1,12 +1,12 @@
 <?php
-include (dirname(__FILE__) . '/layout/header.php');
-include (dirname(__FILE__) . '/layout/footer.php');
+include (dirname(__FILE__) . '/header.php');
+include (dirname(__FILE__) . '/footer.php');
 require_once dirname(__FILE__) . '/model/Carrinho.class.php';
 require_once dirname(__FILE__) . '/controller/BeanPedido.class.php';
 $pedido = new BeanPedido();
 $listpedido = null;
 
-print_r($listpedido);
+//print_r($listpedido);
 ?>
 
 <div class="container">
@@ -38,7 +38,7 @@ print_r($listpedido);
 
                             $codcar = $_SESSION['codcarrinho'];
                             $listpedido = ($pedido->listarPedido($codcar));
-                            print_r($codcar);
+                            //print_r($codcar);
                             //include_once './layout/listcarrinho.php';
                         }
                         ?>

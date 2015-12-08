@@ -36,8 +36,29 @@ REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(114, 1),
 	(116, 1),
 	(117, 1),
+	(118, 1),
+	(122, 1),
+	(123, 1),
+	(124, 1),
+	(125, 1),
+	(126, 1),
+	(127, 1),
+	(128, 1),
+	(129, 1),
+	(130, 1),
+	(131, 1),
+	(132, 1),
+	(133, 1),
+	(134, 1),
+	(135, 1),
+	(136, 1),
+	(138, 1),
 	(115, 3),
-	(112, 41);
+	(119, 3),
+	(120, 3),
+	(121, 3),
+	(112, 41),
+	(137, 42);
 /*!40000 ALTER TABLE `carrinho` ENABLE KEYS */;
 
 
@@ -62,7 +83,8 @@ REPLACE INTO `cliente` (`codigo`, `nome`, `email`, `senha`, `codcadnac`, `codcad
 	(38, 'WIlton', 'wisslton@gmail.com', 'asdasd', NULL, NULL, NULL),
 	(39, 'WIlton', 'wiltossn@gmail.com', 'asd', NULL, NULL, NULL),
 	(40, 'WIlton', 'wilasdasdton@gmail.com', 'aaa', NULL, NULL, NULL),
-	(41, 'WIlton', 'wiltosssssn@gmail.com', '654', NULL, NULL, NULL);
+	(41, 'WIlton', 'wiltosssssn@gmail.com', '654', NULL, NULL, NULL),
+	(42, 'Wilton', 'pranaue@askjdas.com', '4848', NULL, NULL, NULL);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 
 
@@ -95,7 +117,35 @@ REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALU
 	(75, 117, 1, 3),
 	(76, 117, 5, 5),
 	(77, 117, 8, 4),
-	(78, 117, 55, 11);
+	(78, 117, 55, 11),
+	(79, 118, 2, 2),
+	(80, 118, 1, 3),
+	(81, 118, 4, 5),
+	(82, 118, 2, 8),
+	(83, 119, 2, 2),
+	(84, 119, 1, 1),
+	(85, 120, 25, 1),
+	(86, 120, 3, 2),
+	(87, 120, 4, 3),
+	(88, 121, 2, 1),
+	(89, 121, 2, 1),
+	(90, 121, 2, 1),
+	(91, 121, 2, 5),
+	(92, 125, 2, 1),
+	(93, 126, 3, 2),
+	(94, 126, 3, 2),
+	(95, 128, 2, 1),
+	(96, 131, 2, 1),
+	(97, 135, 2, 1),
+	(98, 135, 10, 3),
+	(99, 135, 21, 5),
+	(100, 135, 2, 4),
+	(101, 135, 12, 8),
+	(102, 135, 12, 3),
+	(103, 135, 2, 2),
+	(104, 135, 22, 14),
+	(105, 135, 44, 3),
+	(106, 136, 2, 2);
 /*!40000 ALTER TABLE `itemcarrinho` ENABLE KEYS */;
 
 
@@ -109,6 +159,32 @@ CREATE TABLE IF NOT EXISTS `itemvenda` (
 
 -- Copiando dados para a tabela webpepper.itemvenda: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `itemvenda` DISABLE KEYS */;
+REPLACE INTO `itemvenda` (`codigo`, `venda`, `quantidade`, `produto`) VALUES
+	(73, 17, 2, 2),
+	(74, 17, 2, 2),
+	(75, 17, 1, 3),
+	(76, 17, 5, 5),
+	(77, 17, 8, 4),
+	(78, 17, 55, 11),
+	(79, 18, 2, 2),
+	(80, 18, 1, 3),
+	(81, 18, 4, 5),
+	(82, 18, 2, 8),
+	(83, 19, 2, 2),
+	(84, 19, 1, 1),
+	(85, 20, 25, 1),
+	(86, 20, 3, 2),
+	(87, 20, 4, 3),
+	(97, 21, 2, 1),
+	(98, 21, 10, 3),
+	(99, 21, 21, 5),
+	(100, 21, 2, 4),
+	(101, 21, 12, 8),
+	(102, 21, 12, 3),
+	(103, 21, 2, 2),
+	(104, 21, 22, 14),
+	(105, 21, 44, 3),
+	(106, 22, 2, 2);
 /*!40000 ALTER TABLE `itemvenda` ENABLE KEYS */;
 
 
@@ -126,11 +202,11 @@ CREATE TABLE IF NOT EXISTS `produto` (
 -- Copiando dados para a tabela webpepper.produto: ~15 rows (aproximadamente)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VALUES
-	(1, 'Beterraba', 5, 2.50, 'beterraba.jpg'),
+	(1, 'Beterraba', 25, 2.50, 'beterraba.jpg'),
 	(2, 'Cenoura', 5, 2.96, 'cenoura.jpg'),
 	(3, 'Pimenta', 5, 3.00, 'pimenta.jpg'),
 	(4, 'Coisa Verde', 25, 2.65, 'file_87_123_1.jpg'),
-	(5, 'Coisa Verde 2', 5, 2.65, 'file_89_10_1.jpg'),
+	(5, 'Coisa Verde 2E', 25, 2.65, 'file_89_10_1.jpg'),
 	(6, 'Coisa Verde 3 ', 5, 2.65, 'file_89_11_1.jpg'),
 	(7, 'Coisa Verde 4', 5, 2.96, 'file_90_18_1.jpg'),
 	(8, 'Coisa Verde 5 ', 5, 2.98, 'file_90_29_1.jpg'),
@@ -140,7 +216,11 @@ REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VAL
 	(12, 'Coisa Verde 9 ', 5, 2.69, 'prod_1_12589_1.jpg'),
 	(13, 'Coisa Verde 10', 5, 2.54, 'prod_1_12814_1.jpg'),
 	(14, 'Coisa Verde 11', 5, 2.65, 'prod_1_12838_1.jpg'),
-	(15, 'Coisa Verde 12', 5, 9.65, 'prod_1_5459_1.jpg');
+	(15, 'Coisa Verde 12', 5, 9.65, 'prod_1_5459_1.jpg'),
+	(16, 'Wilton RIbero Silva', 1, 1000.00, NULL),
+	(17, 'Wilton RIbero Silva', 1, 1000.00, NULL),
+	(18, 'Wilton RIbero Silva', 1, 1000.00, 'Sem tÃ­tulo.png'),
+	(19, 'wasdasd', 5225, 14.00, 'IMG-20150928-WA0005.jpg');
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 
@@ -162,7 +242,24 @@ REPLACE INTO `venda` (`codigo`, `cliente`, `codcadnac`, `codcadest`, `endereco`,
 	(2, 3, 4802833113, 1212456, '0', 117),
 	(3, 3, 4802833113, 1212456, '0', 117),
 	(4, 3, 4802833113, 1212456, 'Relandia', 117),
-	(5, 3, 4802833113, 1212456, 'Relandia', 117);
+	(5, 3, 4802833113, 1212456, 'Relandia', 117),
+	(6, 3, 4802833113, 1212456, 'Relandia', 117),
+	(7, 3, 4802833113, 1212456, 'Relandia', 117),
+	(8, 3, 4802833113, 1212456, 'Relandia', 117),
+	(9, 3, 4802833113, 1212456, 'Relandia', 117),
+	(10, 3, 4802833113, 1212456, 'Relandia', 117),
+	(11, 3, 4802833113, 1212456, 'Relandia', 117),
+	(12, 3, 4802833113, 1212456, 'Relandia', 117),
+	(13, 3, 4802833113, 1212456, 'Relandia', 117),
+	(14, 3, 4802833113, 1212456, 'Relandia', 117),
+	(15, 3, 4802833113, 1212456, 'Relandia', 117),
+	(16, 3, 4802833113, 1212456, 'Relandia', 117),
+	(17, 3, 4802833113, 1212456, 'Relandia', 117),
+	(18, 3, 4802833113, 1212456, 'Relandia 54654654654654', 118),
+	(19, 3, 4802833113, 1212456, 'Relandiaasdasdas', 119),
+	(20, 3, 4802833113, 1212456, 'Rua 7 de Setembro N 173', 120),
+	(21, 1, 0, 0, 'asd', 135),
+	(22, 42, 5465, 54654, 'asdasd', 136);
 /*!40000 ALTER TABLE `venda` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

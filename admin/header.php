@@ -4,9 +4,14 @@
     <head>
         <meta charset="UTF-8">
         <title></title>
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="css/layout.css" rel="stylesheet" type="text/css"/>
-        <script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/layout.css" rel="stylesheet" type="text/css"/>
+        <script src="../bootstrap/js/bootstrap.js" type="text/javascript"></script>
+        <script src="../js/jquery-2.1.4.js" type="text/javascript"></script>
+        <script type="text/javascript" src="../js/script.js">
+            
+        
+        </script>
         <style>
 
         </style>
@@ -25,9 +30,9 @@
             </div>
             <div class="collapse navbar-collapse pull-right" >
                 <ul class="nav navbar-nav ">
-                    <li class="active"><a href="main.php">Home</a></li>
-                    <li><a class="active" href="carrinho.php">Carrinho</a></li>
-                    <li><a class="active" href="main.php?logout=true">LogOut</a></li>
+                    <li class="active"><a href="index.php">Home Admin</a></li>
+                    <li><a class="active" href="produto.php">Produtos</a></li>
+                    <li><a class="active" href="../main.php?logout=true">LogOut</a></li>
                     <li></li>
                 </ul>
                 <div class="navbar navbar-form pull-right">

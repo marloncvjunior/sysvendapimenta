@@ -1,6 +1,6 @@
 <?php
-include (dirname(__FILE__) . './layout/header.php');
-include (dirname(__FILE__) . './layout/footer.php');
+include (dirname(__FILE__) . './header.php');
+include (dirname(__FILE__) . './footer.php');
 require_once dirname(__FILE__) . '/model/Carrinho.class.php';
 require_once dirname(__FILE__) . '/controller/BeanPedido.class.php';
 require_once dirname(__FILE__) . '/controller/BeanCliente.class.php';
@@ -9,15 +9,20 @@ $pedido = new BeanPedido();
 $listpedido = null;
 session_start();
 if (isset($_REQUEST['gravar'])) {
-   
-    $vendare = $_REQUEST;
-  $venda = new BeanVenda();
-   unset($vendare['gravar']);
-   unset($vendare['nome']);
-   $vendare['codigo'] = null;
-   $vendare['cliente'] = BeanCliente::getClienteLogado()->getCodigo();
-  $venda->gravarVenda($vendare);
-  die();
+    
+        $vendare = $_REQUEST;
+        $venda = new BeanVenda();
+        unset($vendare['gravar']);
+        unset($vendare['nome']);
+        $vendare['codigo'] = null;
+        $vendare['cliente'] = BeanCliente::getClienteLogado()->getCodigo();
+        if ($vendare['cliente'] == 1) {
+         echo "<script>alert('Faça Login ou cadastre-se !!!!')</script>";
+    } else {
+        $venda->gravarVenda($vendare);
+        die();
+    }
+    
 }
 ?>
 <div class="row ">
@@ -27,20 +32,23 @@ if (isset($_REQUEST['gravar'])) {
 
                 <!-- Form Name -->
                 <legend>Dados Cliente</legend>
-                
+
                 <?php
-                echo $_SESSION['codcarrinho'];
+                //echo $_SESSION['codcarrinho'];
                 $cliente = null;
                 $cliente = BeanCliente::getClienteLogado();
                 if ($cliente->getCodigo() != 1) {
-                    print_r($cliente);
+                    //print_r($cliente);
                     $cliente = BeanCliente::getClienteLogado();
-                } else {}
-                    echo " 
+                } else {
+                    
+                }
+                echo " 
                 <div class='form-group'>
                     <input type='hidden' name='carrinho' value='{$_SESSION['codcarrinho']}'/>
                     <label class='col-md-4 control-label' for='textinput'>Nome</label>  
                     <div class='col-md-5'>
+                        <inut id='' name='codigocli' value='{$cliente->getCodigo()}'/>
                         <input id='textinput' name='nome' placeholder='placeholder' class='form-control input-md' type='text' value='{$cliente->getNome()}'>
                         <span class='help-block'>Nome completo</span>  
                     </div>
@@ -81,19 +89,17 @@ if (isset($_REQUEST['gravar'])) {
                     </div>
                 </div>  
                 ";
-                    
-                
                 ?>
-                 <div class='form-group'>
-                <div class="row">
-                    <div class="col-md-6">
-                       
-                    </div>
-                     <div class="col-md-6">
-                         <button type="submit" formaction="venda.php" formmethod="get" class="btn btn-success" name="gravar" value="venda">Finalizar Venda</button>
+                <div class='form-group'>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                        </div>
+                        <div class="col-md-6">
+                            <button type="submit" formaction="venda.php" formmethod="get" class="btn btn-success" name="gravar" value="venda">Finalizar Venda</button>
+                        </div>
                     </div>
                 </div>
-                 </div>
             </fieldset>
         </form>
 
@@ -117,25 +123,25 @@ if (isset($_REQUEST['gravar'])) {
                 }
                 ?>
                 <tbody>
-                <?php
-                $subtotal = 0;
-                $sub = 0;
-                $quant = 0;
-                $preco = 0;
-                foreach ($listpedido as $key => $value) {
-                    $sub = $value['quantidade'] * $value['preco'];
-                    $quant += $value['quantidade'];
-                    $preco += $value['preco'];
+                    <?php
+                    $subtotal = 0;
+                    $sub = 0;
+                    $quant = 0;
+                    $preco = 0;
+                    foreach ($listpedido as $key => $value) {
+                        $sub = $value['quantidade'] * $value['preco'];
+                        $quant += $value['quantidade'];
+                        $preco += $value['preco'];
 
-                    echo "<tr>
+                        echo "<tr>
                                 <td> <img src='./imagens/produtos/{$value['imagem']}' alt='...' height='121px' width='127px'> {$value['descricao']}<spam class=' glyphicon'></spam></td>
                                 <td>{$value['quantidade']}</td>
                                 <td>R$ {$value['preco']}</td>
                                 <td>R$ " . number_format($sub, 2) . "</td>
                             </tr>";
-                    $subtotal += $sub;
-                }
-                ?>
+                        $subtotal += $sub;
+                    }
+                    ?>
                 </tbody>
                 <tfoot>
                     <tr>

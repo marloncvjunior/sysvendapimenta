@@ -13,9 +13,9 @@ class Insert {
     }
     public function exeInsertMultiplos($tabela,$dados){
         foreach ($dados as $key => $value) {
-            $this->exeInsert($tabela, $value);
-            //print_r($value);
-                // echo '<br>';
+            // print_r($this->exeInsert($tabela, $value));
+          // unset($value['carrinho']);
+              //  echo '<br>';
             
            
             //$this->exeInsert($tabela, $value);
@@ -26,8 +26,8 @@ class Insert {
     public function exeInsert($tabela,$Dados){
         $this->Dados = (array) $Dados;
         $this->Tabela = (String) $tabela; 
-        print_r($this->Dados);
-        $this->GerSql();
+       // print_r($this->Dados);
+       $this->GerSql();
     }
       
     private function saveItem() {
@@ -36,7 +36,7 @@ class Insert {
     
     public function saveCarrinho(){
         $cliente = BeanCliente::getClienteLogado();
-        print_r($cliente);
+        //print_r($cliente);
         //print_r($cliente);
         $this->Sql = "INSERT INTO carrinho (codigo,cliente) VALUES (null,".$cliente->getCodigo() ."  );";
         $con = $this->Conn->conectar();
@@ -56,7 +56,7 @@ class Insert {
     }public function saveItemCar($codcarrinho, $Dados){
         $sql = null;
         $sql = "INSERT INTO itemcarrinho (codigo,carrinho, quantidade, produto) VALUES ";
-        print_r($Dados);
+        //print_r($Dados);
     foreach ($Dados as $key => $value) {
         $sql .="(NULL,".$codcarrinho .",".$value.",".$key."),";
        

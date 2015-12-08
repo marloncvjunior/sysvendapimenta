@@ -1,5 +1,5 @@
 <?php
-require_once (dirname(__FILE__) . '/layout/header.php');
+require_once (dirname(__FILE__) . '/header.php');
 require_once dirname(__FILE__) . '/controller/BeanCliente.class.php';
 require_once dirname(__FILE__).'/controller/DBInsert.class.php';
 
@@ -14,7 +14,7 @@ if ($_REQUEST['acao'] == "login") {
  
 }
 }else{
-    echo "não carregou usuario"; 
+    //echo "não carregou usuario"; 
 }
 
 
@@ -70,6 +70,6 @@ if ($_REQUEST['acao'] == "login") {
 </div>
 
 <?php
-include (dirname(__FILE__) . '/layout/footer.php');
+include (dirname(__FILE__) . '/footer.php');
 ?>
 
