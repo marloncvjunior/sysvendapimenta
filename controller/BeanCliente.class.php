@@ -38,7 +38,7 @@ class BeanCliente {
                         $cliente->setCodCadEst($value['codcadest']);
                         $cliente->setCodCadNac($value['codcadnac']);
                         $cliente->setEndereco($value['endereco']);
-                        $_SESSION['usuario'] = $cliente;
+                        $_SESSION['cliente'] = $cliente;
 
                         echo "Bem vindo " . $cliente->getNome();
                         // echo "<script>location.href='main.php'</script>";
@@ -52,9 +52,9 @@ class BeanCliente {
     }
 
     public static function getClienteLogado() {
-        if (isset($_SESSION['usuario'])) {
+        if (isset($_SESSION['cliente'])) {
 
-            return $_SESSION['usuario'];
+            return $_SESSION['cliente'];
         } else {
             //die("<a href='login.php'>Realize o Login/Cadastro !!!! </a>");
             // echo "<script>alert('Entre com o seu usuario ou crie uma conta');</script>";

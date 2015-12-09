@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   PRIMARY KEY (`codigo`),
   KEY `FKCLICAR` (`cliente`),
   CONSTRAINT `FKCLICAR` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.carrinho: ~11 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.carrinho: ~38 rows (aproximadamente)
 /*!40000 ALTER TABLE `carrinho` DISABLE KEYS */;
 REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(107, 1),
@@ -53,12 +53,21 @@ REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(135, 1),
 	(136, 1),
 	(138, 1),
+	(140, 1),
+	(141, 1),
+	(142, 1),
+	(143, 1),
+	(145, 1),
+	(146, 1),
 	(115, 3),
 	(119, 3),
 	(120, 3),
 	(121, 3),
+	(144, 3),
+	(147, 3),
 	(112, 41),
-	(137, 42);
+	(137, 42),
+	(139, 42);
 /*!40000 ALTER TABLE `carrinho` ENABLE KEYS */;
 
 
@@ -72,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `codcadest` bigint(20) DEFAULT NULL,
   `endereco` longtext,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.cliente: ~7 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.cliente: ~8 rows (aproximadamente)
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 REPLACE INTO `cliente` (`codigo`, `nome`, `email`, `senha`, `codcadnac`, `codcadest`, `endereco`) VALUES
 	(1, 'Visitante', '', '', NULL, NULL, NULL),
@@ -97,9 +106,9 @@ CREATE TABLE IF NOT EXISTS `itemcarrinho` (
   PRIMARY KEY (`codigo`),
   KEY `FKItemCar` (`carrinho`),
   CONSTRAINT `FKItemCar` FOREIGN KEY (`carrinho`) REFERENCES `carrinho` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.itemcarrinho: ~16 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.itemcarrinho: ~46 rows (aproximadamente)
 /*!40000 ALTER TABLE `itemcarrinho` DISABLE KEYS */;
 REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALUES
 	(63, 112, 1, 1),
@@ -145,7 +154,11 @@ REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALU
 	(103, 135, 2, 2),
 	(104, 135, 22, 14),
 	(105, 135, 44, 3),
-	(106, 136, 2, 2);
+	(106, 136, 2, 2),
+	(107, 137, 2, 2),
+	(108, 143, 2, 1),
+	(109, 145, 2, 2),
+	(110, 146, 2, 3);
 /*!40000 ALTER TABLE `itemcarrinho` ENABLE KEYS */;
 
 
@@ -157,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `itemvenda` (
   `produto` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.itemvenda: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.itemvenda: ~27 rows (aproximadamente)
 /*!40000 ALTER TABLE `itemvenda` DISABLE KEYS */;
 REPLACE INTO `itemvenda` (`codigo`, `venda`, `quantidade`, `produto`) VALUES
 	(73, 17, 2, 2),
@@ -184,7 +197,10 @@ REPLACE INTO `itemvenda` (`codigo`, `venda`, `quantidade`, `produto`) VALUES
 	(103, 21, 2, 2),
 	(104, 21, 22, 14),
 	(105, 21, 44, 3),
-	(106, 22, 2, 2);
+	(106, 22, 2, 2),
+	(107, 23, 2, 2),
+	(108, 24, 2, 1),
+	(110, 25, 2, 3);
 /*!40000 ALTER TABLE `itemvenda` ENABLE KEYS */;
 
 
@@ -197,12 +213,12 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `imagem` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `codigo` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.produto: ~15 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.produto: ~19 rows (aproximadamente)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VALUES
-	(1, 'Beterraba', 25, 2.50, 'beterraba.jpg'),
+	(1, 'Beterraba', 251, 2.50, 'beterraba.jpg'),
 	(2, 'Cenoura', 5, 2.96, 'cenoura.jpg'),
 	(3, 'Pimenta', 5, 3.00, 'pimenta.jpg'),
 	(4, 'Coisa Verde', 25, 2.65, 'file_87_123_1.jpg'),
@@ -224,6 +240,22 @@ REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VAL
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 
+-- Copiando estrutura para tabela webpepper.usuario
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `codigo` bigint(20) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  `login` varchar(50) DEFAULT NULL,
+  `senha` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela webpepper.usuario: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+REPLACE INTO `usuario` (`codigo`, `nome`, `login`, `senha`) VALUES
+	(1, 'admin', 'admin', 'admin');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+
+
 -- Copiando estrutura para tabela webpepper.venda
 CREATE TABLE IF NOT EXISTS `venda` (
   `codigo` bigint(20) NOT NULL AUTO_INCREMENT,
@@ -233,9 +265,9 @@ CREATE TABLE IF NOT EXISTS `venda` (
   `endereco` varchar(50) DEFAULT NULL,
   `carrinho` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.venda: ~5 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.venda: ~24 rows (aproximadamente)
 /*!40000 ALTER TABLE `venda` DISABLE KEYS */;
 REPLACE INTO `venda` (`codigo`, `cliente`, `codcadnac`, `codcadest`, `endereco`, `carrinho`) VALUES
 	(1, NULL, 4802833113, 1212456, '0', 117),
@@ -259,7 +291,10 @@ REPLACE INTO `venda` (`codigo`, `cliente`, `codcadnac`, `codcadest`, `endereco`,
 	(19, 3, 4802833113, 1212456, 'Relandiaasdasdas', 119),
 	(20, 3, 4802833113, 1212456, 'Rua 7 de Setembro N 173', 120),
 	(21, 1, 0, 0, 'asd', 135),
-	(22, 42, 5465, 54654, 'asdasd', 136);
+	(22, 42, 5465, 54654, 'asdasd', 136),
+	(23, 42, 4534, 4534, 'asdasd', 137),
+	(24, 3, 4802833113, 1212456, 'Relandia', 143),
+	(25, 3, 4802833113, 1212456, 'Relandia', 146);
 /*!40000 ALTER TABLE `venda` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

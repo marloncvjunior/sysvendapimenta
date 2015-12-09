@@ -28,7 +28,7 @@ class Selecte {
         $this->Sql = "Select * from {$this->Tabela}";
         $array = $this->prepareExec();
         //print_r($array);
-        return $array->FetchAll();
+        return $array->FetchAll(PDO::FETCH_ASSOC);
     }
       public function exeQueryCampo($tabela, $codigo,$campo) {
         $this->Tabela = $tabela;

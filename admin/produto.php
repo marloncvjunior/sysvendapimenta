@@ -1,7 +1,8 @@
 <?php
 include (dirname(__FILE__) . './header.php');
 include (dirname(__FILE__) . './footer.php');
-require_once  dirname(__FILE__).'/BeanAdminProduto.class.php';
+require_once  dirname(__DIR__).'/controller/BeanAdminProduto.class.php';
+require_once  dirname(__DIR__).'/model/Usuario.class.php';
 require_once(dirname(__DIR__) . "/model/Produto.class.php");
 
 
@@ -38,6 +39,7 @@ if (isset($_POST['gravar'])) {
     
     if ($item['codigo'] != '') {
         $admprod->alterar($item);
+        echo "<script>location.href='produto.php';</script>";
     }else{
        
         //echo 'inserir';

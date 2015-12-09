@@ -10,7 +10,7 @@ if ($_REQUEST['acao'] == "login") {
     BeanCliente::autentica($_REQUEST);
    
 }else{
-    BeanCliente::cadastraCliente($_REQUEST);
+   BeanCliente::cadastraCliente($_REQUEST);
  
 }
 }else{
