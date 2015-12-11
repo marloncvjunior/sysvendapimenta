@@ -3,8 +3,18 @@ include (dirname(__FILE__) . '/header.php');
 
 require_once dirname(__FILE__) . '/model/Carrinho.class.php';
 require_once dirname(__FILE__) . '/controller/BeanPedido.class.php';
+require_once dirname(__FILE__) . '/controller/BeanCarrinho.class.php';
 $pedido = new BeanPedido();
 $listpedido = null;
+$car = new BeanCarrinho();
+
+if (isset($_GET['excluir'])) {
+    $cod = $_GET['excluir'];
+    $carrinho = $_GET['carrinho'];
+    $car->rm($cod,$carrinho);
+    echo "<script>alert('Item retirado do carrinho');"
+    . "location.href='carrinho.php'</script>";
+}
 
 //print_r($listpedido);
 ?>
@@ -30,6 +40,7 @@ $listpedido = null;
                         <th>Quantidade</th>
                         <th>Valor Unitário</th>
                         <th>Subtotal</th>
+                        <th>Ação</th>
                         </thead>
                         <?php
                         session_start();
@@ -58,6 +69,7 @@ $listpedido = null;
                                 <td>{$value['quantidade']}</td>
                                 <td>R$ {$value['preco']}</td>
                                 <td>R$ " . number_format($sub, 2) . "</td>
+                                <td><a href='?excluir={$value['produto']}&&carrinho={$codcar}' class='btn btn-xs btn-danger class excluir' ><span class='glyphicon glyphicon-remove'></span> Excluir</a></td>
                             </tr>";
                                 $subtotal += $sub;
                             }
@@ -69,6 +81,7 @@ $listpedido = null;
                                 <td><?php echo $quant; ?></td>
                                 <td>R$ <?php echo number_format($preco, 2); ?></td>
                                 <td>R$ <?php echo number_format($subtotal, 2); ?></td>
+                                <td></td>
                             </tr>
                             <tr>
 
@@ -76,7 +89,7 @@ $listpedido = null;
                                 <td></td>
                                 <td></td>
                                 <td><a class="btn btn-success" href="venda.php?codcar=<?php echo $codcar; ?>">Finalizar Carrinho</a></td>
-
+                                <td></td>
                             </tr>
                         </tfoot>
                     </table>

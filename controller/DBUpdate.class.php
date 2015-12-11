@@ -21,7 +21,13 @@ class DBUpdate {
        $stmt = $this->prepareExec();
        return $stmt->FetchAll();
     }
-    
+     public function exeQueryEstoque($produto,$estoque){
+      
+         $this->Sql = "Update produto set estoque = {$estoque} where codigo = {$produto}";  
+      echo $this->Sql;
+       $stmt = $this->prepareExec();
+       return $stmt->FetchAll();
+    }
     private function prepareExec(){
         $this->Conn = new Conneccao();
         $con = $this->Conn->conectar();

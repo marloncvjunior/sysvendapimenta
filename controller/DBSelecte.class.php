@@ -30,6 +30,14 @@ class Selecte {
         //print_r($array);
         return $array->FetchAll(PDO::FETCH_ASSOC);
     }
+     public function exeQueryEstoque($produto) {
+        $this->Tabela = 'produto';
+        $this->Sql = "Select estoque from {$this->Tabela} where codigo = {$produto}";
+        $array = $this->prepareExec();
+        //echo $this->Sql;
+        //print_r($array);
+        return $array->Fetch(PDO::FETCH_ASSOC);
+    }
       public function exeQueryCampo($tabela, $codigo,$campo) {
         $this->Tabela = $tabela;
         $this->Sql = "Select * from {$this->Tabela} where {$campo} =" . $codigo;

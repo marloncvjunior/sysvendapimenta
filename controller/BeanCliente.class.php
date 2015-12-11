@@ -42,7 +42,7 @@ class BeanCliente {
 
                         echo "Bem vindo " . $cliente->getNome();
                         // echo "<script>location.href='main.php'</script>";
-                        print_r($cliente);
+                        print_r($_SESSION['cliente']);
                     }
                 }
             }

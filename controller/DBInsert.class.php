@@ -76,7 +76,7 @@ class Insert {
         $Places =':'. implode(', :', array_keys($this->Dados));
         $this->Sql = "INSERT INTO {$this->Tabela} ({$Fileds}) VALUES ({$Places});";
         
-        echo $this->Sql;
+        //echo $this->Sql;
         $this->prepareExec();
     }
      private function prepareExec(){

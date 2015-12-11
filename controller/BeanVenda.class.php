@@ -1,6 +1,7 @@
 <?php
 require_once dirname(__FILE__).'/DBSelecte.class.php';
 require_once dirname(__FILE__).'/DBInsert.class.php';
+require_once dirname(__FILE__).'/DBUpdate.class.php';
 class BeanVenda {
   
     
@@ -17,6 +18,7 @@ class BeanVenda {
     public function gravarVenda($venda){
         $select = new Selecte();
         $gravar = new Insert();
+        $update = new DBUpdate();
         //print_r($venda);
         $gravar->exeInsert('venda', $venda);
         $itens = $select->exeQueryCampo('itemcarrinho', $venda['carrinho'], 'carrinho');
@@ -29,8 +31,14 @@ class BeanVenda {
               // print_r($value);
            // echo "<Br>";
             $gravar->exeInsert('itemvenda', $value);
+            $estoque = $select->exeQueryEstoque($value['produto']);
+            //print_r($estoque);
+            $update->exeQueryEstoque($value['produto'],($estoque['estoque'] - $value['quantidade']));
         }
+        
+        
          unset($_SESSION['codcarrinho']);
+         //print_r($itens);
         echo "<script>alert('Venda Realizada com sucesso !!!!');</script>";
         echo "<script>location.href = 'main.php';</script>";
        

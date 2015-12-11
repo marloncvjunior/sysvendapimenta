@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   PRIMARY KEY (`codigo`),
   KEY `FKCLICAR` (`cliente`),
   CONSTRAINT `FKCLICAR` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.carrinho: ~57 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.carrinho: ~61 rows (aproximadamente)
 /*!40000 ALTER TABLE `carrinho` DISABLE KEYS */;
 REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(107, 1),
@@ -75,12 +75,20 @@ REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(161, 1),
 	(162, 1),
 	(163, 1),
+	(164, 1),
+	(165, 1),
+	(166, 1),
+	(167, 1),
 	(115, 3),
 	(119, 3),
 	(120, 3),
 	(121, 3),
 	(144, 3),
 	(147, 3),
+	(168, 3),
+	(169, 3),
+	(170, 3),
+	(171, 3),
 	(112, 41),
 	(137, 42),
 	(139, 42);
@@ -122,9 +130,9 @@ CREATE TABLE IF NOT EXISTS `itemcarrinho` (
   PRIMARY KEY (`codigo`),
   KEY `FKItemCar` (`carrinho`),
   CONSTRAINT `FKItemCar` FOREIGN KEY (`carrinho`) REFERENCES `carrinho` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=132 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.itemcarrinho: ~45 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.itemcarrinho: ~59 rows (aproximadamente)
 /*!40000 ALTER TABLE `itemcarrinho` DISABLE KEYS */;
 REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALUES
 	(63, 112, 1, 1),
@@ -176,7 +184,16 @@ REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALU
 	(109, 145, 2, 2),
 	(110, 146, 2, 3),
 	(111, 155, 2, 1),
-	(112, 163, 2, 2);
+	(112, 163, 2, 2),
+	(123, 167, 2, 2),
+	(124, 168, 10, 2),
+	(125, 168, 3, 5),
+	(126, 168, 4, 6),
+	(127, 168, 20, 8),
+	(128, 169, 2, 2),
+	(129, 169, 1, 5),
+	(130, 170, 100, 1),
+	(131, 170, 5, 2);
 /*!40000 ALTER TABLE `itemcarrinho` ENABLE KEYS */;
 
 
@@ -218,7 +235,69 @@ REPLACE INTO `itemvenda` (`codigo`, `venda`, `quantidade`, `produto`) VALUES
 	(106, 22, 2, 2),
 	(107, 23, 2, 2),
 	(108, 24, 2, 1),
-	(110, 25, 2, 3);
+	(110, 25, 2, 3),
+	(123, 26, 2, 2),
+	(123, 27, 2, 2),
+	(124, 28, 10, 2),
+	(125, 28, 3, 5),
+	(126, 28, 4, 6),
+	(127, 28, 20, 8),
+	(124, 29, 10, 2),
+	(125, 29, 3, 5),
+	(126, 29, 4, 6),
+	(127, 29, 20, 8),
+	(124, 30, 10, 2),
+	(125, 30, 3, 5),
+	(126, 30, 4, 6),
+	(127, 30, 20, 8),
+	(124, 31, 10, 2),
+	(125, 31, 3, 5),
+	(126, 31, 4, 6),
+	(127, 31, 20, 8),
+	(124, 32, 10, 2),
+	(125, 32, 3, 5),
+	(126, 32, 4, 6),
+	(127, 32, 20, 8),
+	(124, 33, 10, 2),
+	(125, 33, 3, 5),
+	(126, 33, 4, 6),
+	(127, 33, 20, 8),
+	(124, 34, 10, 2),
+	(125, 34, 3, 5),
+	(126, 34, 4, 6),
+	(127, 34, 20, 8),
+	(124, 35, 10, 2),
+	(125, 35, 3, 5),
+	(126, 35, 4, 6),
+	(127, 35, 20, 8),
+	(124, 36, 10, 2),
+	(125, 36, 3, 5),
+	(126, 36, 4, 6),
+	(127, 36, 20, 8),
+	(124, 37, 10, 2),
+	(125, 37, 3, 5),
+	(126, 37, 4, 6),
+	(127, 37, 20, 8),
+	(124, 38, 10, 2),
+	(125, 38, 3, 5),
+	(126, 38, 4, 6),
+	(127, 38, 20, 8),
+	(124, 39, 10, 2),
+	(125, 39, 3, 5),
+	(126, 39, 4, 6),
+	(127, 39, 20, 8),
+	(124, 40, 10, 2),
+	(125, 40, 3, 5),
+	(126, 40, 4, 6),
+	(127, 40, 20, 8),
+	(124, 41, 10, 2),
+	(125, 41, 3, 5),
+	(126, 41, 4, 6),
+	(127, 41, 20, 8),
+	(128, 42, 2, 2),
+	(129, 42, 1, 5),
+	(130, 43, 100, 1),
+	(131, 43, 5, 2);
 /*!40000 ALTER TABLE `itemvenda` ENABLE KEYS */;
 
 
@@ -226,21 +305,20 @@ REPLACE INTO `itemvenda` (`codigo`, `venda`, `quantidade`, `produto`) VALUES
 CREATE TABLE IF NOT EXISTS `produto` (
   `codigo` bigint(20) NOT NULL AUTO_INCREMENT,
   `descricao` varchar(255) DEFAULT NULL,
-  `estoque` bigint(20) DEFAULT NULL,
+  `estoque` double DEFAULT NULL,
   `preco` float(10,2) DEFAULT NULL,
   `imagem` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `codigo` (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.produto: ~15 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.produto: ~9 rows (aproximadamente)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VALUES
-	(1, 'Beterraba', 251, 2.50, 'beterraba.jpg'),
-	(2, 'Cenoura', 5, 2.96, 'cenoura.jpg'),
+	(1, 'Beterraba', 151, 2.50, 'beterraba.jpg'),
 	(3, 'Pimenta', 5, 3.00, 'pimenta.jpg'),
 	(4, 'Coisa Verde', 25, 2.65, 'file_87_123_1.jpg'),
-	(5, 'Coisa Verde 2E', 25, 2.65, 'file_89_10_1.jpg'),
+	(5, 'Coisa Verde 2E', 24, 2.65, 'file_89_10_1.jpg'),
 	(6, 'Coisa Verde 3 ', 5, 2.65, 'file_89_11_1.jpg'),
 	(7, 'Coisa Verde 4', 5, 2.96, 'file_90_18_1.jpg'),
 	(8, 'Coisa Verde 5 ', 5, 2.98, 'file_90_29_1.jpg'),
@@ -248,9 +326,7 @@ REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VAL
 	(10, 'Coisa Verde 6', 5, 2.94, 'file_90_34_1.jpg'),
 	(11, 'Coisa Verde 8 ', 5, 2.94, 'file_90_46_1.jpg'),
 	(12, 'Coisa Verde 9 ', 5, 2.69, 'prod_1_12589_1.jpg'),
-	(13, 'Coisa Verde 10', 5, 2.54, 'prod_1_12814_1.jpg'),
-	(14, 'Coisa Verde 11', 5, 2.65, 'prod_1_12838_1.jpg'),
-	(15, 'Coisa Verde 12', 5, 9.65, 'prod_1_5459_1.jpg');
+	(13, 'Coisa Verde 10', 5, 2.54, 'prod_1_12814_1.jpg');
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 
@@ -279,7 +355,7 @@ CREATE TABLE IF NOT EXISTS `venda` (
   `endereco` varchar(50) DEFAULT NULL,
   `carrinho` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela webpepper.venda: ~22 rows (aproximadamente)
 /*!40000 ALTER TABLE `venda` DISABLE KEYS */;
@@ -308,7 +384,25 @@ REPLACE INTO `venda` (`codigo`, `cliente`, `codcadnac`, `codcadest`, `endereco`,
 	(22, 42, 5465, 54654, 'asdasd', 136),
 	(23, 42, 4534, 4534, 'asdasd', 137),
 	(24, 3, 4802833113, 1212456, 'Relandia', 143),
-	(25, 3, 4802833113, 1212456, 'Relandia', 146);
+	(25, 3, 4802833113, 1212456, 'Relandia', 146),
+	(26, 3, 4802833113, 1212456, 'Relandia', 167),
+	(27, 3, 4802833113, 1212456, 'Relandia', 167),
+	(28, 3, 4802833113, 1212456, 'Relandia', 168),
+	(29, 3, 4802833113, 1212456, 'Relandia', 168),
+	(30, 3, 4802833113, 1212456, 'Relandia', 168),
+	(31, 3, 4802833113, 1212456, 'Relandia', 168),
+	(32, 3, 4802833113, 1212456, 'Relandia', 168),
+	(33, 3, 4802833113, 1212456, 'Relandia', 168),
+	(34, 3, 4802833113, 1212456, 'Relandia', 168),
+	(35, 3, 4802833113, 1212456, 'Relandia', 168),
+	(36, 3, 4802833113, 1212456, 'Relandia', 168),
+	(37, 3, 4802833113, 1212456, 'Relandia', 168),
+	(38, 3, 4802833113, 1212456, 'Relandia', 168),
+	(39, 3, 4802833113, 1212456, 'Relandia', 168),
+	(40, 3, 4802833113, 1212456, 'Relandia', 168),
+	(41, 3, 4802833113, 1212456, 'Relandia', 168),
+	(42, 3, 4802833113, 1212456, 'Relandia', 169),
+	(43, 3, 4802833113, 1212456, 'Relandia', 170);
 /*!40000 ALTER TABLE `venda` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

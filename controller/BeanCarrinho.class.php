@@ -13,14 +13,14 @@ class BeanCarrinho {
     private $carrinho;
 
     public function __construct() {
-        //session_start();
-        if (isset($_SESSION['usuario'])) {
-            $cliente = $_SESSION['usuario'];
+        /*session_start();
+        if (isset($_SESSION['cliente'])) {
+            $cliente = $_SESSION['cliente'];
         } else {
             session_start();
             $cliente = '';
         }
-        //
+        */
 
         $this->carrinho = new Carrinho();
     }
@@ -44,9 +44,9 @@ class BeanCarrinho {
         }
     }
 
-    public function rm() {
+    public function rm($produto,$carrinho) {
         $delete = new DBDelete();
-        $delete->exeQuery($codigo, $tabela);
+        $delete->exeQueryCarrinho($produto,$carrinho);
     }
 
     public function resumo() {

@@ -9,8 +9,14 @@ class DBDelete {
        ;
    }
    
-   public function exeQuery($codigo,$tabela){
-       $this->Sql = "delete from {$tabela} where codigo = {$codigo}";
+   public function exeQuery($codigo,$tabela,$coluna){
+       $this->Sql = "delete from {$tabela} where {$coluna} = {$codigo}";
+       return $this->prepareExec();
+       
+       
+   }
+    public function exeQueryCarrinho($produto,$carrinho){
+       $this->Sql = "delete from itemcarrinho where produto = {$produto} and carrinho={$carrinho}";
        return $this->prepareExec();
        
        

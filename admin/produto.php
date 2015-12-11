@@ -14,10 +14,10 @@ $admprod = new BeanAdminProduto();
 $itens = $admprod->listarProdutos();
 $produto = new Produto();
 if (isset($_GET['alterar'])) {
-    echo "foi";
+    //echo "foi";
     foreach ($itens as $key => $value) {
         if ($value['codigo'] == $_GET['alterar']) {
-            echo "foi2";
+           // echo "foi2";
             $produto->setCodigo($value['codigo']);
             $produto->setDescricao($value['descricao']);
             $produto->setEstoque($value['estoque']);
@@ -26,7 +26,7 @@ if (isset($_GET['alterar'])) {
         }
     }
 } else {
-    echo " asdas das ";
+ //   echo " asdas das ";
 }
 //print_r($_FILES['arquivo']['name']);
 
@@ -37,7 +37,7 @@ if (isset($_POST['gravar'])) {
     $arquivo_tmp = $_FILES['imagem']['tmp_name'];
     move_uploaded_file($arquivo_tmp, $destino);
     unset($item['gravar']);
-    print_r($item);
+    //print_r($item);
 
 
     if ($item['codigo'] != '') {
@@ -171,25 +171,25 @@ if (isset($_POST['gravar'])) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <table class="table">
+                    <table class="table center">
                         <thead>
-                            <tr>
-                                <th>
+                            <tr class="center">
+                                <th class="center">
                                     Codigo
                                 </th>
-                                <th>
+                                <th class="center">
                                     Descricao
                                 </th>
-                                <th>
+                                <th class="center">
                                     Preço
                                 </th>
-                                <th>
+                                <th class="center">
                                     Estoque
                                 </th>
-                                <th>
+                                <th class="center">
                                     Imagem
                                 </th>
-                                <th>
+                                <th class="center">
                                     Ação
                                 </th>
                             </tr>
@@ -223,29 +223,7 @@ if (isset($_POST['gravar'])) {
                             </tr>
                         </tbody>
                     </table>
-                    <ul class="pagination">
-                        <li>
-                            <a href="#">Prev</a>
-                        </li>
-                        <li>
-                            <a href="#">1</a>
-                        </li>
-                        <li>
-                            <a href="#">2</a>
-                        </li>
-                        <li>
-                            <a href="#">3</a>
-                        </li>
-                        <li>
-                            <a href="#">4</a>
-                        </li>
-                        <li>
-                            <a href="#">5</a>
-                        </li>
-                        <li>
-                            <a href="#">Next</a>
-                        </li>
-                    </ul>
+                    
                 </div>
             </div>
         </div>

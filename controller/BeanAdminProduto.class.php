@@ -22,7 +22,7 @@ class BeanAdminProduto {
     }
     public function excluir($cod){
         $delete = new DBDelete();
-        $retorno = $delete->exeQuery($cod,'produto');
+        $retorno = $delete->exeQuery($cod,'produto','codigo');
         return $retorno;
     }
 }

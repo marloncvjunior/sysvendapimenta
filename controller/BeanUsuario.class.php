@@ -59,7 +59,7 @@ class BeanUsuario {
         session_start();
 
         if (isset($_SESSION['usuario'])) {
-            echo "esta";
+           // echo "esta";
             //print_r($_SESSION['usuario']);
             //header('Location: index.php');
         } else {
