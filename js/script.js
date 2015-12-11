@@ -13,6 +13,8 @@ $(document).ready(function () {
         $(this).parents('p').find('.quant').val('');
             return false;    
         });
+    
+   
         
         
        

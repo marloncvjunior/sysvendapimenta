@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS `carrinho` (
   PRIMARY KEY (`codigo`),
   KEY `FKCLICAR` (`cliente`),
   CONSTRAINT `FKCLICAR` FOREIGN KEY (`cliente`) REFERENCES `cliente` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.carrinho: ~38 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.carrinho: ~57 rows (aproximadamente)
 /*!40000 ALTER TABLE `carrinho` DISABLE KEYS */;
 REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(107, 1),
@@ -59,6 +59,22 @@ REPLACE INTO `carrinho` (`codigo`, `cliente`) VALUES
 	(143, 1),
 	(145, 1),
 	(146, 1),
+	(148, 1),
+	(149, 1),
+	(150, 1),
+	(151, 1),
+	(152, 1),
+	(153, 1),
+	(154, 1),
+	(155, 1),
+	(156, 1),
+	(157, 1),
+	(158, 1),
+	(159, 1),
+	(160, 1),
+	(161, 1),
+	(162, 1),
+	(163, 1),
 	(115, 3),
 	(119, 3),
 	(120, 3),
@@ -83,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.cliente: ~8 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.cliente: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
 REPLACE INTO `cliente` (`codigo`, `nome`, `email`, `senha`, `codcadnac`, `codcadest`, `endereco`) VALUES
 	(1, 'Visitante', '', '', NULL, NULL, NULL),
@@ -106,9 +122,9 @@ CREATE TABLE IF NOT EXISTS `itemcarrinho` (
   PRIMARY KEY (`codigo`),
   KEY `FKItemCar` (`carrinho`),
   CONSTRAINT `FKItemCar` FOREIGN KEY (`carrinho`) REFERENCES `carrinho` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.itemcarrinho: ~46 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.itemcarrinho: ~45 rows (aproximadamente)
 /*!40000 ALTER TABLE `itemcarrinho` DISABLE KEYS */;
 REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALUES
 	(63, 112, 1, 1),
@@ -158,7 +174,9 @@ REPLACE INTO `itemcarrinho` (`codigo`, `carrinho`, `quantidade`, `produto`) VALU
 	(107, 137, 2, 2),
 	(108, 143, 2, 1),
 	(109, 145, 2, 2),
-	(110, 146, 2, 3);
+	(110, 146, 2, 3),
+	(111, 155, 2, 1),
+	(112, 163, 2, 2);
 /*!40000 ALTER TABLE `itemcarrinho` ENABLE KEYS */;
 
 
@@ -170,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `itemvenda` (
   `produto` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.itemvenda: ~27 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.itemvenda: ~28 rows (aproximadamente)
 /*!40000 ALTER TABLE `itemvenda` DISABLE KEYS */;
 REPLACE INTO `itemvenda` (`codigo`, `venda`, `quantidade`, `produto`) VALUES
 	(73, 17, 2, 2),
@@ -213,9 +231,9 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `imagem` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`codigo`),
   UNIQUE KEY `codigo` (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.produto: ~19 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.produto: ~15 rows (aproximadamente)
 /*!40000 ALTER TABLE `produto` DISABLE KEYS */;
 REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VALUES
 	(1, 'Beterraba', 251, 2.50, 'beterraba.jpg'),
@@ -232,11 +250,7 @@ REPLACE INTO `produto` (`codigo`, `descricao`, `estoque`, `preco`, `imagem`) VAL
 	(12, 'Coisa Verde 9 ', 5, 2.69, 'prod_1_12589_1.jpg'),
 	(13, 'Coisa Verde 10', 5, 2.54, 'prod_1_12814_1.jpg'),
 	(14, 'Coisa Verde 11', 5, 2.65, 'prod_1_12838_1.jpg'),
-	(15, 'Coisa Verde 12', 5, 9.65, 'prod_1_5459_1.jpg'),
-	(16, 'Wilton RIbero Silva', 1, 1000.00, NULL),
-	(17, 'Wilton RIbero Silva', 1, 1000.00, NULL),
-	(18, 'Wilton RIbero Silva', 1, 1000.00, 'Sem tÃ­tulo.png'),
-	(19, 'wasdasd', 5225, 14.00, 'IMG-20150928-WA0005.jpg');
+	(15, 'Coisa Verde 12', 5, 9.65, 'prod_1_5459_1.jpg');
 /*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 
 
@@ -267,7 +281,7 @@ CREATE TABLE IF NOT EXISTS `venda` (
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela webpepper.venda: ~24 rows (aproximadamente)
+-- Copiando dados para a tabela webpepper.venda: ~22 rows (aproximadamente)
 /*!40000 ALTER TABLE `venda` DISABLE KEYS */;
 REPLACE INTO `venda` (`codigo`, `cliente`, `codcadnac`, `codcadest`, `endereco`, `carrinho`) VALUES
 	(1, NULL, 4802833113, 1212456, '0', 117),

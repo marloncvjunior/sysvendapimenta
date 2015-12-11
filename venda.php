@@ -1,6 +1,6 @@
 <?php
 include (dirname(__FILE__) . './header.php');
-include (dirname(__FILE__) . './footer.php');
+
 require_once dirname(__FILE__) . '/model/Carrinho.class.php';
 require_once dirname(__FILE__) . '/controller/BeanPedido.class.php';
 require_once dirname(__FILE__) . '/controller/BeanCliente.class.php';
@@ -25,6 +25,26 @@ if (isset($_REQUEST['gravar'])) {
     
 }
 ?>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#gravar").click(function () {
+           // alert('foi');
+           //var descricao = $(this).parents('div').find('#descricao').val();
+           var codcadnac = $(this).parents('div').find('#codcadnac').val();
+           var codcadest = $(this).parents('div').find('#codcadest').val();
+          if((!isNaN(codcadnac) && (!isNaN(codcadest)))){
+              alert('tudo certo');
+              return true;
+          }else{
+              alert('Insira um valor válido');
+              return false;
+          }
+           //alert('descricao = '+valueOf(descricao)+' preco= '+valueOf(preco)+' estoque= '+valueOf(estoque);
+          // valueOf(preco);
+           
+        });
+    });
+</script>
 <div class="row ">
     <div class="col-md-7 ">
         <form class="form-horizontal">
@@ -49,7 +69,7 @@ if (isset($_REQUEST['gravar'])) {
                     <label class='col-md-4 control-label' for='textinput'>Nome</label>  
                     <div class='col-md-5'>
                         <inut id='' name='codigocli' value='{$cliente->getCodigo()}'/>
-                        <input id='textinput' name='nome' placeholder='placeholder' class='form-control input-md' type='text' value='{$cliente->getNome()}'>
+                        <input id='textinput' name='nome' placeholder='' class='form-control input-md' type='text' value='{$cliente->getNome()}'>
                         <span class='help-block'>Nome completo</span>  
                     </div>
                 </div>
@@ -58,7 +78,7 @@ if (isset($_REQUEST['gravar'])) {
                 <div class='form-group'>
                     <label class='col-md-4 control-label' for='textinput'>Cpf/Cnpj</label>  
                     <div class='col-md-5'>
-                        <input id='textinput' name='codcadnac' placeholder='placeholder' class='form-control input-md' required='' type='text' value='{$cliente->getCodCadNac()}'>
+                        <input id='codcadnac' name='codcadnac' placeholder='' class='form-control input-md' required='' type='text' value='{$cliente->getCodCadNac()}'>
 
                     </div>
                 </div>
@@ -67,7 +87,7 @@ if (isset($_REQUEST['gravar'])) {
                 <div class='form-group'>
                     <label class='col-md-4 control-label' for='textinput'>I.E</label>  
                     <div class='col-md-5'>
-                        <input id='textinput' name='codcadest' placeholder='placeholder' class='form-control input-md' required='' type='text' value='{$cliente->getCodCadEac()}'>
+                        <input id='codcadest' name='codcadest' placeholder='' class='form-control input-md' required='' type='text' value='{$cliente->getCodCadEac()}'>
                         <span class='help-block'>Inscrição Estadual/ Não utilizar R.G</span>  
                     </div>
                 </div>
@@ -76,7 +96,7 @@ if (isset($_REQUEST['gravar'])) {
                 <div class='form-group'>
                     <label class='col-md-4 control-label' for='textinput'>Endereço</label>  
                     <div class='col-md-8'>
-                        <input id='textinput' name='endereco' placeholder='placeholder' class='form-control input-md' type='text' value='{$cliente->getEndereco()}'>
+                        <input id='endereco' name='endereco' placeholder='' class='form-control input-md' type='text' value='{$cliente->getEndereco()}'>
                         <span class='help-block'>Endereço Completo</span>  
                     </div>
                 </div>
@@ -96,7 +116,7 @@ if (isset($_REQUEST['gravar'])) {
 
                         </div>
                         <div class="col-md-6">
-                            <button type="submit" formaction="venda.php" formmethod="get" class="btn btn-success" name="gravar" value="venda">Finalizar Venda</button>
+                            <button type="submit" formaction="venda.php" formmethod="post" class="btn btn-success" name="gravar" value="venda" id="gravar">Finalizar Venda</button>
                         </div>
                     </div>
                 </div>
@@ -158,3 +178,5 @@ if (isset($_REQUEST['gravar'])) {
         </div>
     </div>
 </div>
+<?php
+include (dirname(__FILE__) . './footer.php');

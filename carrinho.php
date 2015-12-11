@@ -1,6 +1,6 @@
 <?php
 include (dirname(__FILE__) . '/header.php');
-include (dirname(__FILE__) . '/footer.php');
+
 require_once dirname(__FILE__) . '/model/Carrinho.class.php';
 require_once dirname(__FILE__) . '/controller/BeanPedido.class.php';
 $pedido = new BeanPedido();
@@ -91,3 +91,5 @@ $listpedido = null;
 
     </div>
 </div>
+<?php
+include (dirname(__FILE__) . '/footer.php');

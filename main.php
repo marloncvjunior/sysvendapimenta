@@ -3,7 +3,7 @@ include_once (dirname(__FILE__) . './header.php');
 require_once (dirname(__FILE__) . "/controller/BeanShopping.class.php");
 require_once (dirname(__FILE__) . "/controller/BeanCarrinho.class.php");
 require_once (dirname(__FILE__) . "/controller/BeanCliente.class.php");
-include_once (dirname(__FILE__) . '/footer.php');
+
 $cliente = BeanCliente::getClienteLogado();
 $carrinho = new BeanCarrinho();
 $carrinho->add($_GET);
@@ -19,8 +19,7 @@ if (isset($_GET['resumo']) && $_GET['resumo'] == 'true') {
 //var_dump($carrinho);
 ?>
 
-<!-- Código acima cria a barra fixa do site -->
-<div class="container-fluid">
+
 
     <div class="row">
 
@@ -84,6 +83,9 @@ if (isset($_GET['resumo']) && $_GET['resumo'] == 'true') {
             </div>
         </div>
     </div>
-</div>
+
+<?php
+
+include_once (dirname(__FILE__) . '/footer.php');
 
 

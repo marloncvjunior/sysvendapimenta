@@ -1,4 +1,4 @@
- <div class="navbar navbar-bottom navbar-inverse">
+ <div class="navbar navbar-bottom navbar-inverse navbar-fixed-bottom">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-3">

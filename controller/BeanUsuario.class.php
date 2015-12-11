@@ -6,12 +6,13 @@ require_once(dirname(__DIR__) . "/model/Usuario.class.php");
 class BeanUsuario {
 
     public static function autentica($parametro = null) {
-        //session_start();
+     
+
         //print_r($parametro);
-          $user = new Usuario();
+        $user = new Usuario();
         //print_r($user);
-        
-        
+
+
         if (isset($parametro['login'])) {
             // echo "cheio";
 
@@ -19,7 +20,7 @@ class BeanUsuario {
             $senha = $parametro['senha'];
             $consulta = new Selecte();
             $userlist = $consulta->exeQuery("usuario");
-           //print_r($userlist);
+            //print_r($userlist);
 
             foreach ($userlist as $key => $value) {
                 //print_r($userlist);
@@ -27,11 +28,12 @@ class BeanUsuario {
                     //echo 'email correto';
                     if ($value['senha'] == $senha) {
                         // echo 'senha';
-                     
+
                         $user->setCodigo($value['codigo']);
                         $user->setLogin($value['login']);
                         $user->setNome($value['nome']);
                         $_SESSION['usuario'] = $user;
+                        print_r($_SESSION['usuario']);
                     }
                 }
             }
@@ -47,20 +49,39 @@ class BeanUsuario {
             //die("<a href='login.php'>Realize o Login/Cadastro !!!! </a>");
             // echo "<script>alert('Entre com o seu usuario ou crie uma conta');</script>";
             //echo "<script>location.href='login.php'</script>";
-            $cliente = new Cliente();
-            $cliente->setCodigo('1');
-            $cliente->setNome('Visitante');
+            $usuario = null;
 
-            return $cliente;
+            return $usuario;
         }
     }
 
-    public static function verificaPermisso() {
-        $usuario = BeanUsuario::verifica();
-        if ($usuario->getCodigo()) {
-            
+    public static function verificaPermissao() {
+        session_start();
+
+        if (isset($_SESSION['usuario'])) {
+            echo "esta";
+            //print_r($_SESSION['usuario']);
+            //header('Location: index.php');
         } else {
-            header('Location: index.php');
+            //print_r($_SESSION);
+        
+            //print_r($_SESSION['usuario']);
+            //echo "nao esta";
+           die("<div class='container-fluid'>
+                <div class='row'>
+                    <div class='col-md-12'>
+			<div class='alert alert-dismissable alert-warning'>
+				 
+				<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>
+				</button>
+				<h4>
+				Alert!
+				</h4> <strong>Warning! </strong> Oque está fazendo aqui ???? Autentique-se !!!! <a href='login.php' class='alert-link'>alert link</a>
+			</div>
+                    </div>
+                </div>
+            </div>");
+            //header('Location: login.php');
         }
     }
 
